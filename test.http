@@ -7,3 +7,35 @@ GET http://localhost:8080/models
 # Test Text Gen Web UI is up and has a list of models
 
 GET http://localhost:5001/v1/models
+
+###
+# Send a prompt, targetting a particular model
+POST http://localhost:8080/v1/chat/completions 
+content-Type: application/json
+
+{
+     "model": "gpt-3.5-turbo",
+     "messages": [
+          {
+               "role": "user", 
+               "content": "In the context of programming, what is Java and why would you use it?"
+               }
+          ],
+     "temperature": 0.7
+}
+
+###
+# Send a prompt, targetting a particular model
+POST http://localhost:5001/v1/chat/completions 
+content-Type: application/json
+
+{
+     "model": "gpt-3.5-turbo",
+     "messages": [
+          {
+               "role": "user", 
+               "content": "In the context of programming, what is Java and why would you use it?"
+               }
+          ],
+     "temperature": 0.7
+}
