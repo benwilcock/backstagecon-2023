@@ -37,8 +37,8 @@ services:
     restart: unless-stopped
     environment:
       - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'
-      - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Text Generation UI API server
-      # - 'OPENAI_API_HOST=http://local-ai-api:8080' # LocalAI API endpoint
+      # - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Text Generation UI API server
+      - 'OPENAI_API_HOST=http://local-ai-api:8080' # LocalAI API endpoint
       # - 'DEFAULT_MODEL=openllama-7b' # Specify the default model to use ("gpt-3.5-turbo" is default)
     ports:
       - 3001:3000 # ChatBot UI will be on this port (outside:inside)
