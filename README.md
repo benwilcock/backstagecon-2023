@@ -57,3 +57,8 @@ environment:
 ## Integration With Backstage
 
 To use either UI in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate.
+
+## OpenAI API Documentation
+
+* [OpenAI API Reference](https://platform.openai.com/docs/api-reference)
+* [OpenAI API in OpenAPI format](https://github.com/openai/openai-openapi/blob/master/openapi.yaml)
