@@ -1,6 +1,11 @@
-localai-models/*
+localai-models/**
 !localai-models/.keep
 !localai-models/gpt-3.5-turbo.yaml
 
-text-generation-webui-config/*
+text-generation-webui-config/**
 !text-generation-webui-config/.keep
+!text-generation-webui-config/characters
+!text-generation-webui-config/characters/Backchat.png
+!text-generation-webui-config/characters/Backchat.yaml
+!text-generation-webui-config/presets
+!text-generation-webui-config/presets/Backchat.yaml

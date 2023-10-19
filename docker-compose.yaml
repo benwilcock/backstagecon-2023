@@ -37,9 +37,9 @@ services:
     restart: unless-stopped
     environment:
       - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'
-      # - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Text Generation UI API server
-      - 'OPENAI_API_HOST=http://local-ai-api:8080' # LocalAI API endpoint
-      - 'DEFAULT_MODEL=openllama-7b' # Specify the default model to use ("gpt-3.5-turbo" is default)
+      - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Text Generation UI API server
+      # - 'OPENAI_API_HOST=http://local-ai-api:8080' # LocalAI API endpoint
+      # - 'DEFAULT_MODEL=openllama-7b' # Specify the default model to use ("gpt-3.5-turbo" is default)
     ports:
       - 3001:3000 # ChatBot UI will be on this port (outside:inside)
 
@@ -48,13 +48,14 @@ services:
     container_name: text-generation-webui
     restart: unless-stopped
     environment:
-      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai" # Custom launch args (e.g., --model MODEL_NAME)
+        # Custom launch args (e.g., --model MODEL_NAME). If you haven't downloaded any models, remove --model MODEL or server won't boot.
+      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai --model mistral-7b-openorca.Q4_K_M.gguf" 
 #      - BUILD_EXTENSIONS_LIVE="silero_tts whisper_stt" # Install named extensions during every container launch. THIS WILL SIGNIFICANLTLY SLOW LAUNCH TIME.
     ports:
-      - 7860:7860  # Default web port
-      - 5000:5000  # Default API port
+      - 7860:7860  # Default GUI port (browser UI used for model settings and chat)
+      - 5000:5000  # Default TGUI-API port (needs api extension running)
       - 5005:5005  # Default streaming port
-      - 5001:5001  # Default OpenAI API extension port
+      - 5001:5001  # Default OpenAI compatible API port (needs openai extension running - used by Chatbot UI)
     volumes:
       - ./text-generation-webui-config/characters:/app/characters
       - ./text-generation-webui-config/loras:/app/loras
