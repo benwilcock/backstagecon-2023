@@ -23,7 +23,7 @@ services:
       - 'DEBUG=true' # More info for builds and output when tailing logs
       - 'GALLERIES=[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"url": "github:go-skynet/model-gallery/huggingface.yaml","name":"huggingface"}]'
      # You can preload (auto-download) different models. See: https://github.com/go-skynet/model-gallery
-      - 'PRELOAD_MODELS=[{"url": "github:go-skynet/model-gallery/openllama-7b-open-instruct.yam", "name": "openllama-7b"}]'
+      - 'PRELOAD_MODELS=[{"url": "github:go-skynet/model-gallery/openllama-7b-open-instruct.yaml", "name": "openllama-7b"}]'
     volumes:
       - ./localai-models:/models:cached # Maps the model folder to this project's models folder
     ports:
@@ -48,7 +48,7 @@ services:
     container_name: text-generation-webui
     restart: unless-stopped
     environment:
-      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai --model mistral-7b-instruct-v0.1.Q4_K_M.gguf" # Custom launch args (e.g., --model MODEL_NAME)
+      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai" # Custom launch args (e.g., --model MODEL_NAME)
 #      - BUILD_EXTENSIONS_LIVE="silero_tts whisper_stt" # Install named extensions during every container launch. THIS WILL SIGNIFICANLTLY SLOW LAUNCH TIME.
     ports:
       - 7860:7860  # Default web port

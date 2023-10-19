@@ -1,5 +1,6 @@
 localai-models/*
 !localai-models/.keep
+!localai-models/gpt-3.5-turbo.yaml
 
 text-generation-webui-config/*
 !text-generation-webui-config/.keep
