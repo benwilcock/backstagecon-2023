@@ -1,0 +1,5 @@
+localai-models/*
+!localai-models/.keep
+
+text-generation-webui-config/*
+!text-generation-webui-config/.keep

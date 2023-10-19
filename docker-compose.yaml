@@ -1,0 +1,71 @@
+version: '3.6'
+
+## See also .env file for additional settings
+name: backstagecon-local-ai
+
+services:
+  # OpenAI compatible API server capable of using several AI models including gpt4app-j (chat), stable diffusion (images), and whisper (audio)
+  local-ai:
+    container_name: local-ai-api
+    # See https://quay.io/repository/go-skynet/local-ai?tab=tags for versions.
+    image: quay.io/go-skynet/local-ai:v1.25.0 # was: quay.io/go-skynet/local-ai:v1.20.1
+    # As initially LocalAI will download the models defined in PRELOAD_MODELS
+    # you might need to tweak the healthcheck values here according to your network connection.
+    # Here we give a timespan of 20m to download all the required files.
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - 'THREADS=4' # Set this to the number of physical CPU's not threads
+      - 'CONTEXT_SIZE=4096' # The historic memory for conversations
+      - 'MODELS_PATH=/models' # Location of the models folder in the image
+      - 'DEBUG=true' # More info for builds and output when tailing logs
+      - 'GALLERIES=[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"url": "github:go-skynet/model-gallery/huggingface.yaml","name":"huggingface"}]'
+     # You can preload (auto-download) different models. See: https://github.com/go-skynet/model-gallery
+      - 'PRELOAD_MODELS=[{"url": "github:go-skynet/model-gallery/openllama-7b-open-instruct.yam", "name": "openllama-7b"}]'
+    volumes:
+      - ./localai-models:/models:cached # Maps the model folder to this project's models folder
+    ports:
+      - 8080:8080 # Rest API will be on this port (outside:inside)
+    command: ["/usr/bin/local-ai" ]
+
+  # ChatBot UI - ChatGPT Like Frontend ######################
+  chatbot-ui:
+    container_name: chatbot-ui
+    image: ghcr.io/mckaywrigley/chatbot-ui:main
+    restart: unless-stopped
+    environment:
+      - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'
+      # - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Text Generation UI API server
+      - 'OPENAI_API_HOST=http://local-ai-api:8080' # LocalAI API endpoint
+      - 'DEFAULT_MODEL=openllama-7b' # Specify the default model to use ("gpt-3.5-turbo" is default)
+    ports:
+      - 3001:3000 # ChatBot UI will be on this port (outside:inside)
+
+  text-generation-webui:
+    image: atinoda/text-generation-webui:llama-cpu # Specify variant as the :tag (I'm using CPU only version - llama-cpu)
+    container_name: text-generation-webui
+    restart: unless-stopped
+    environment:
+      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai --model mistral-7b-instruct-v0.1.Q4_K_M.gguf" # Custom launch args (e.g., --model MODEL_NAME)
+#      - BUILD_EXTENSIONS_LIVE="silero_tts whisper_stt" # Install named extensions during every container launch. THIS WILL SIGNIFICANLTLY SLOW LAUNCH TIME.
+    ports:
+      - 7860:7860  # Default web port
+      - 5000:5000  # Default API port
+      - 5005:5005  # Default streaming port
+      - 5001:5001  # Default OpenAI API extension port
+    volumes:
+      - ./text-generation-webui-config/characters:/app/characters
+      - ./text-generation-webui-config/loras:/app/loras
+      - ./text-generation-webui-config/models:/app/models
+      - ./text-generation-webui-config/presets:/app/presets
+      - ./text-generation-webui-config/prompts:/app/prompts
+      - ./text-generation-webui-config/training:/app/training
+#      - ./text-generation-webui-config/extensions:/app/extensions  # Persist all extensions
+#      - ./text-generation-webui-config/extensions/silero_tts:/app/extensions/silero_tts  # Persist a single extension
+    logging:
+      driver:  json-file
+      options:
+        max-file: "3"   # number of files or file count
+        max-size: '10m'
