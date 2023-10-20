@@ -106,6 +106,15 @@ To add a full Backchat system hierarchy and the TechDocs used in this talk to yo
 
 [https://github.com/benwilcock/backstagecon-2023/blob/main/backchat-catalog.yaml](https://github.com/benwilcock/backstagecon-2023/blob/main/backchat-catalog.yaml)
 
+```yaml
+catalog:
+  locations:
+    - type: url
+      target: https://github.com/benwilcock/backstagecon-2023/blob/main/backchat-catalog.yaml
+  rules:
+    - allow: [Component, API, Resource, System, Domain, Location, Group, User] # User and Group must be added.
+```
+
 ## Links For The GUIs
 
 * [Chatbot UI on localhost port 3001](http://localhost:3001)
