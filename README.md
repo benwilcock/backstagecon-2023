@@ -4,6 +4,12 @@ Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocat
 
 [Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
 
+## Talk Synopsis
+
+| **Title**                                                     | **Outline**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| GenAI In Backstage - Turbocharge Your Developer Productivity! | Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses. |
+
 ## Launching The LLM Servers and UI's
 
 You can bring up the background AI servers and GUIs with:
