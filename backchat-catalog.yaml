@@ -80,7 +80,7 @@ metadata:
     - backchat
   links:
     - url: https://www.npmjs.com/package/@benbravo73/backstage-plugin-backchat
-      title: Plugin Page On NPM
+      title: Backchat Plugin Page On NPM
       type: website
       icon: WebAsset
   annotations:
