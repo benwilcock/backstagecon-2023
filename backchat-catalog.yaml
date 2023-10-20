@@ -26,6 +26,7 @@ metadata:
   description: The creators of ChatGPT
 spec:
   type: company
+  children: []
   profile:
     displayName: OpenAI
     email: info@openai.com
