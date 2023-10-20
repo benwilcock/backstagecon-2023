@@ -1,6 +1,6 @@
-![VMware Tanzu Developer Portal](./images/hero-banner.jpg){ width="850" }
+![Backchat](./images/backchat-avatar.jpg){ width="500" }
 
-Your developers will love :heart: VMware® Tanzu Developer Portal™. Tanzu Developer Portal makes creating, discovering, and managing enterprise software faster and more productive for everyone! With Tanzu Developer Portal, applications and APIs deployed across your business become easier to find, easier to understand, and easier to control. 
+Your developers will :heart: Backchat! Tanzu Developer Portal makes creating, discovering, and managing enterprise software faster and more productive for everyone! With Tanzu Developer Portal, applications and APIs deployed across your business become easier to find, easier to understand, and easier to control. 
 
 !!! tip "Proudly Based On [Backstage](https://backstage.io)"
 
