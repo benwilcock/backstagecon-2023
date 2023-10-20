@@ -1,5 +1,6 @@
 # backstagecon-2023
-BackstageCon 2023
+
+Thanks for taking the time to see my talk at BackstageCon 2023. This folder represnets my notes and other setup necessary to recreate what I built for the demonstration of "Backchat".
 
 ## Launching The LLM Servers and UI's
 
@@ -48,9 +49,7 @@ This download will usually take several minutes.
 
 Once downloaded, reboot the container and go back to Models page of the [Text Generation WebUI GUI](http://localhost:7860) and now 'select' the `mistral-7b-openorca.Q4_K_M.gguf` as your model and click the "Load" button. Set the model to use as many threads as you have physical CPUs (if your PC supports 8 threads, you probably have 4 CPUs, so set it to "4").
 
-Next, go to the "parameters > character" tab and choose "Backchat" from the dropdown list.
-
-Finally, head to the "Chat" tab and ask the Backchat AI a question.
+Finally, head to the "Chat" tab and ask the Backchat AI (A.K.A the "Assistant") a question. For example
 
 ```text
 You: "Who was the president of the United States in 1997?"
