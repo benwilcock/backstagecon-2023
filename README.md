@@ -68,11 +68,9 @@ If you already loaded the Backchat software catalog YAML into your Backstage ins
 
 ## Configuring The Chatbot UI Backend
 
-See  for hints on how to do this.
-
 In the configuration for the Chatbot UI container (in the `docker-compose.yaml` file), set the `OPENAI_API_HOST` environment variable to point to the endpoint of the backend server you'd like to use.
 
-For LocalAI server:
+To use LocalAI server as the backend API:
 
 ```yaml
 ...
@@ -81,7 +79,7 @@ environment:
 ...
 ```
 
-For Text Generation Web UI server (with the `openai` extension loaded):
+To use Text Generation Web UI server (with the `openai` extension loaded) as the backend API:
 
 ```yaml
 ...
