@@ -100,7 +100,7 @@ environment:
 
 To use either of these AI GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate.
 
-## Adding Th Backchat TechDocs And Catalog To Backstage
+## Adding The Backchat TechDocs And Catalog To Backstage
 
 To add a full Backchat system hierarchy and the TechDocs used in this talk to your Backstage instance, simply register the following URL into your Backstage software catalog. You can do this trough the UI, or by adding it to the catalog section of your `app-config.local.yaml` file.
 
