@@ -1,6 +1,6 @@
 # Ben Wilcock @ BackstageCon-2023
 
-Thanks for taking the time to see my talk at BackstageCon 2023. This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
+Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocatedeventsna2023.sched.com/event/07a22acf572c9ba6ac78a3fff50c6e7d). This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
 
 [Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
 
