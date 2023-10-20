@@ -49,7 +49,7 @@ services:
     restart: unless-stopped
     environment:
         # Custom launch args (e.g., --model MODEL_NAME). If you haven't downloaded any models, remove --model MODEL or server won't boot.
-      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai --model mistral-7b-openorca.Q4_K_M.gguf" 
+      - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai" #  --model mistral-7b-openorca.Q4_K_M.gguf 
 #      - BUILD_EXTENSIONS_LIVE="silero_tts whisper_stt" # Install named extensions during every container launch. THIS WILL SIGNIFICANLTLY SLOW LAUNCH TIME.
     ports:
       - 7860:7860  # Default GUI port (browser UI used for model settings and chat)

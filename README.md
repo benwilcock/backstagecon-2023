@@ -25,6 +25,19 @@ There are three servers in this setup.
 
 Both LocalAI and Text Generation Web UI have the ability to download LLMs and provide an OpenAI API for compatibility with various frontends. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend.
 
+## Configuring Text Generation Web UI
+
+You need to begin by downloading a large language model in the "Models" tab.
+
+Enter the following details in the download box on the right hand side, then hit the big "Download" button to grab the model.
+
+Download Model: [TheBloke/Mistral-7B-OpenOrca-GGUF](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)
+File: mistral-7b-openorca.Q4_K_M.gguf
+
+> Mistral 7B is an exceptional model for local use. It has fast inference times and does not need very much system memory (8GB).
+
+This download will usually take several minutes.
+
 ## Configuring The Chatbot UI Backend
 
 See  for hints on how to do this.
