@@ -89,6 +89,8 @@ spec:
   owner: user:ben.wilcock
   profile:
     displayName: Backchat
+    picture: https://raw.githubusercontent.com/benwilcock/backstagecon-2023/main/text-generation-webui-config/characters/Backchat.png
+
 
 
 ####################################
