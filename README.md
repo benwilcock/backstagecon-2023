@@ -25,6 +25,12 @@ There are three servers in this setup.
 
 Both LocalAI and Text Generation Web UI have the ability to download LLMs and provide an OpenAI API for compatibility with various frontends. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend.
 
+## Configuring LocalAI
+
+LocalAI should work as a backend right out of the box, so long as you gave it time to download a default model.
+
+If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also test the OpenAI API provided by this server via the API definition page in Backstage. Start by choosing the server `http://localhost:8080` from the list and execute a `GET` on the `/Models` endpoint. There's no need to authenticate. The server should return a list of the available models.
+
 ## Configuring Text Generation Web UI
 
 You need to begin by downloading a large language model in the "Models" tab in the [Text Generation WebUI GUI](http://localhost:7860).
@@ -54,7 +60,7 @@ The AI should respond with a reasonable answer, such as:
 The president of the United States in 1997 was Bill Clinton.
 ```
 
-If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also try the OpenAI API calls via the API definition page in Backstage. Start with `GET` for `/Models`.
+If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also try the OpenAI API calls via the API definition page in Backstage. Start by using the server `http://localhost:5001` and execute a `GET` on the `/Models` endpoint. There's no need to authenticate. The server should return a list of the available models.
 
 ## Configuring The Chatbot UI Backend
 
