@@ -97,4 +97,4 @@ spec:
   lifecycle: production
   owner: group:openai
   definition:
-    $text: https://github.com/backstage/backstage/blob/master/plugins/catalog-backend/src/schema/openapi.yaml
+    $text: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
