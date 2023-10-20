@@ -79,12 +79,12 @@ metadata:
     - backstage
     - backchat
   links:
-    - url: https://github.com/benwilcock/backstage-plugin-backchat
-      title:  Website
+    - url: https://www.npmjs.com/package/@benbravo73/backstage-plugin-backchat
+      title: Plugin Page On NPM
       type: website
       icon: WebAsset
-  #annotations:
-    #backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstagecon-2023/tree/main/docs
+  # annotations:
+  #   backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstagecon-2023/tree/main/docs
 spec: 
   owner: user:ben.wilcock
   profile:
