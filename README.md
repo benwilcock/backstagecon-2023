@@ -46,7 +46,7 @@ Enter the following details in the download box on the right hand side, then hit
 | Filename:        | [mistral-7b-openorca.Q4_K_M.gguf](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF/blob/main/mistral-7b-openorca.Q4_K_M.gguf) |
  
 
-> Mistral 7B is an exceptional model for local use. It has fast inference times and does not need very much system memory (8GB).
+> Mistral 7B is an exceptional model for local use. It has fast inference times, generates good text, and does not need very much system memory (around 8GB for the Q4 version model).
 
 This download will usually take several minutes.
 
