@@ -74,6 +74,31 @@ spec:
   owner: user:ben.wilcock
   profile:
     displayName: Backchat
+  dependsOn:
+    - component:localai
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: localai
+  description: 'LocalAI provides a ChatGPT compatible backend for private AI using popular LLMs'
+  links:
+    - url: https://localai.io
+      title: Website
+      type: website
+      icon: WebAsset
+  tags:
+    - backchat
+    - localai
+spec:
+  type: service
+  lifecycle: production
+  providesApis:
+    - openai-api
+  owner: user:ben.wilcock
+  profile:
+    displayName: Backchat
 
 ######################################
 # APIs
