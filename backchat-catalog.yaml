@@ -83,8 +83,8 @@ metadata:
       title:  Website
       type: website
       icon: WebAsset
-  annotations:
-    backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstagecon-2023/tree/main/docs
+  #annotations:
+    #backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstagecon-2023/tree/main/docs
 spec: 
   owner: user:ben.wilcock
   profile:
@@ -115,7 +115,7 @@ spec:
   owner: user:ben.wilcock
   system: backchat
   profile:
-    displayName: Backchat
+    displayName: Backchat Plugin
     picture: https://raw.githubusercontent.com/benwilcock/backstagecon-2023/main/text-generation-webui-config/characters/Backchat.png
   dependsOn:
     - component:text-generation-web-ui
@@ -230,6 +230,7 @@ metadata:
 spec:
   type: openapi
   lifecycle: production
+  system: backchat
   owner: group:openai
   definition:
     $text: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
