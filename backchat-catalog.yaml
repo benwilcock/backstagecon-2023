@@ -50,6 +50,18 @@ spec:
     email: info@openai.com
     picture: https://yt3.googleusercontent.com/UqT_vCkJIn1P2fH1pchr6lbe3xeEekY61h4bUpJkVuityqKOEtUYcNy3pLiJ5OKdj4uKA81FWE8=s176-c-k-c0x00ffffff-no-rj
 
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: open-source
+  description: The creators of ChatGPT
+spec:
+  type: movement
+  children: []
+  profile:
+    displayName: Open Source
+
 
 
 ####################################
@@ -74,8 +86,10 @@ spec:
   owner: user:ben.wilcock
   profile:
     displayName: Backchat
+    picture: https://raw.githubusercontent.com/benwilcock/backstagecon-2023/main/text-generation-webui-config/characters/Backchat.png
   dependsOn:
-    - component:localai
+    - component:text-generation-web-ui
+    - component:chatbot-ui
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -96,9 +110,56 @@ spec:
   lifecycle: production
   providesApis:
     - openai-api
-  owner: user:ben.wilcock
+  owner: group:open-source
   profile:
-    displayName: Backchat
+    displayName: LocalAI
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: text-generation-web-ui
+  description: 'Text Generation Web UI provides a browser based GUI and a ChatGPT compatible backend for private AI using popular LLMs'
+  links:
+    - url: https://github.com/oobabooga/text-generation-webui
+      title: Website
+      type: website
+      icon: WebAsset
+  tags:
+    - backchat
+    - text-generation-web-ui
+spec:
+  type: service
+  lifecycle: production
+  providesApis:
+    - openai-api
+  owner: group:open-source
+  profile:
+    displayName: Text Generation Web UI
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: chatbot-ui
+  description: 'Chatbot UI provides a browser based GUI compatible with backends offering the OpenAI API'
+  links:
+    - url: https://github.com/mckaywrigley/chatbot-ui
+      title: Website
+      type: website
+      icon: WebAsset
+  tags:
+    - backchat
+    - chatbotui
+spec:
+  type: service
+  lifecycle: production
+  owner: group:open-source
+  profile:
+    displayName: Text Generation Web UI
+  dependsOn:
+    - component:localai
+    - component:text-generation-web-ui
 
 ######################################
 # APIs
