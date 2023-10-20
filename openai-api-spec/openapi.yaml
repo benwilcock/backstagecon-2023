@@ -12,8 +12,8 @@ info:
     url: https://github.com/openai/openai-openapi/blob/master/LICENSE
 servers:
   - url: https://api.openai.com/v1
-  - url: https://localhost:8080/v1
-  - url: https://localhost:5001/v1
+  - url: http://localhost:8080/v1
+  - url: http://localhost:5001/v1
 tags:
   - name: Audio
     description: Learn how to turn audio into text.
