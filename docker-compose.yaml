@@ -57,14 +57,20 @@ services:
       - 5005:5005  # Default streaming port
       - 5001:5001  # Default OpenAI compatible API port (needs openai extension running - used by Chatbot UI)
     volumes:
+      - ./text-generation-webui-config/chatlogs/Assistant:/logs/chat/Assistant/
       - ./text-generation-webui-config/characters:/app/characters
       - ./text-generation-webui-config/loras:/app/loras
       - ./text-generation-webui-config/models:/app/models
       - ./text-generation-webui-config/presets:/app/presets
       - ./text-generation-webui-config/prompts:/app/prompts
       - ./text-generation-webui-config/training:/app/training
-#      - ./text-generation-webui-config/extensions:/app/extensions  # Persist all extensions
+      - ./text-generation-webui-config/settings:/app/settings
+      - ./text-generation-webui-config/extensions:/app/extensions  # Persist all extensions
 #      - ./text-generation-webui-config/extensions/silero_tts:/app/extensions/silero_tts  # Persist a single extension
+      - type: bind
+        source: ./text-generation-webui-config/settings.yaml
+        target: /app/settings.yaml
+        read_only: false
     logging:
       driver:  json-file
       options:

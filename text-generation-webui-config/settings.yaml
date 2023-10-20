@@ -1,0 +1,36 @@
+dark_theme: false
+show_controls: true
+start_with: ''
+mode: chat-instruct
+chat_style: cai-chat
+prompt-default: QA
+prompt-notebook: QA
+preset: simple-1
+max_new_tokens: 4096
+max_new_tokens_min: 1
+max_new_tokens_max: 4096
+seed: -1
+negative_prompt: ''
+truncation_length: 32768
+truncation_length_min: 0
+truncation_length_max: 32768
+custom_stopping_strings: ''
+auto_max_new_tokens: false
+max_tokens_second: 0
+ban_eos_token: false
+custom_token_bans: ''
+add_bos_token: true
+skip_special_tokens: true
+stream: true
+name1: You
+character: Assistant
+instruction_template: Mistral
+chat-instruct_command: |-
+  Continue the chat dialogue below. Write a single reply for the character "<|character|>".
+
+  <|prompt|>
+autoload_model: false
+default_extensions:
+- api
+- openai
+- gallery

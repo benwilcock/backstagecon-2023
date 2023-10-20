@@ -5,7 +5,6 @@ localai-models/**
 text-generation-webui-config/**
 !text-generation-webui-config/.keep
 !text-generation-webui-config/characters
-!text-generation-webui-config/characters/Backchat.png
-!text-generation-webui-config/characters/Backchat.yaml
-!text-generation-webui-config/presets
-!text-generation-webui-config/presets/Backchat.yaml
+!text-generation-webui-config/characters/Assistant.png
+!text-generation-webui-config/characters/Assistant.yaml
+!text-generation-webui-config/settings.yaml
