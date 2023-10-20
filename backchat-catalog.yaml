@@ -1,0 +1,80 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: ben.wilcock
+  description: Ben is an innovator - constantly looking for ways to improve developer productivity.
+  links:
+    - url: https://www.linkedin.com/in/benwilcock/
+      title: Ben Wilcock On LinkedIn (Follow).
+      type: website
+      icon: WebAsset
+    - url: https://www.youtube.com/@BenWilcock
+      title: Ben Wilcock On YouTube
+      type: website
+      icon: WebAsset
+spec:
+  profile:
+    displayName: Ben Wilcock
+    picture: https://pbs.twimg.com/profile_images/1577303225677615107/f0lW_xGN_400x400.jpg
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: openai
+  description: The creators of ChatGPT
+spec:
+  type: company
+  profile:
+    displayName: OpenAI
+    email: info@openai.com
+    picture: https://yt3.googleusercontent.com/UqT_vCkJIn1P2fH1pchr6lbe3xeEekY61h4bUpJkVuityqKOEtUYcNy3pLiJ5OKdj4uKA81FWE8=s176-c-k-c0x00ffffff-no-rj
+
+
+####################################
+# COMPONENTS
+####################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backchat
+  description: 'This plugin integrates Private AI GUIs into Backstage'
+  links:
+    - url: https://github.com/benwilcock/backstage-plugin-backchat
+      title:  Website
+      type: website
+      icon: WebAsset
+  tags:
+    - backchat
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  profile:
+    displayName: Backchat
+
+######################################
+# APIs
+######################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: openai-api
+  description: 'The API exposed by ChatGPT and compatible systems'
+  tags:
+    - api
+    - openai-api
+  links:
+    - url: https://platform.openai.com/docs/api-reference
+      title: OpenAI API Documentation
+      type: website
+      icon: WebAsset
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:openai
+  definition:
+    $text: https://github.com/backstage/backstage/blob/master/plugins/catalog-backend/src/schema/openapi.yaml
