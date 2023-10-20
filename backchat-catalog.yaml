@@ -233,4 +233,4 @@ spec:
   # system: backchat
   owner: group:openai
   definition:
-    $text: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
+    $text: https://github.com/benwilcock/backstagecon-2023/blob/main/openai-api-spec/openapi.yaml
