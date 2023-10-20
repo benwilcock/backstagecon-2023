@@ -1,7 +1,7 @@
 ###
 # Test LocalAI is up and has a list of models
 
-GET http://localhost:8080/models
+GET http://localhost:8080/v1/models
 
 ###
 # Test Text Gen Web UI is up and has a list of models
