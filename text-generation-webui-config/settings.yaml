@@ -1,7 +1,7 @@
 dark_theme: false
 show_controls: true
 start_with: ''
-mode: chat-instruct
+mode: chat
 chat_style: cai-chat
 prompt-default: QA
 prompt-notebook: QA
@@ -24,7 +24,7 @@ skip_special_tokens: true
 stream: true
 name1: You
 character: Assistant
-instruction_template: Mistral
+instruction_template: ChatML
 chat-instruct_command: |-
   Continue the chat dialogue below. Write a single reply for the character "<|character|>".
 
