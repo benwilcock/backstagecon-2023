@@ -1,4 +1,4 @@
-![Backchat](./images/backchat-avatar.jpg){ width="500" }
+![Backchat](./images/backchat-avatar.png){ width="500" }
 
 Your developers will :heart: Backchat! Tanzu Developer Portal makes creating, discovering, and managing enterprise software faster and more productive for everyone! With Tanzu Developer Portal, applications and APIs deployed across your business become easier to find, easier to understand, and easier to control. 
 
