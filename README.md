@@ -1,6 +1,8 @@
-# backstagecon-2023
+# Ben Wilcock @ BackstageCon-2023
 
 Thanks for taking the time to see my talk at BackstageCon 2023. This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
+
+[Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
 
 ## Launching The LLM Servers and UI's
 
