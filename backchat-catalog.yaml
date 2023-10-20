@@ -1,3 +1,6 @@
+###############################
+# USERS & GROUPS
+###############################
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
@@ -63,6 +66,30 @@ spec:
     displayName: Open Source
 
 
+###############################
+# SYSTEMS
+###############################
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: backchat
+  description: "Bringing Generative AI into Backstage."
+  tags:
+    - backstage
+    - backchat
+  links:
+    - url: https://github.com/benwilcock/backstage-plugin-backchat
+      title:  Website
+      type: website
+      icon: WebAsset
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/benwilcock/backstagecon-2023/tree/main/docs
+spec: 
+  owner: user:ben.wilcock
+  profile:
+    displayName: Backchat
+
 
 ####################################
 # COMPONENTS
@@ -71,7 +98,7 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backchat
+  name: backchat-plugin
   description: 'This plugin integrates Private AI GUIs into Backstage'
   links:
     - url: https://github.com/benwilcock/backstage-plugin-backchat
@@ -84,6 +111,7 @@ spec:
   type: service
   lifecycle: production
   owner: user:ben.wilcock
+  system: backchat
   profile:
     displayName: Backchat
     picture: https://raw.githubusercontent.com/benwilcock/backstagecon-2023/main/text-generation-webui-config/characters/Backchat.png
@@ -112,6 +140,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
+  system: backchat
   providesApis:
     - openai-api
   owner: group:open-source
@@ -143,6 +172,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
+  system: backchat
   providesApis:
     - openai-api
   owner: group:open-source
@@ -171,6 +201,7 @@ spec:
   type: service
   lifecycle: production
   owner: group:open-source
+  system: backchat
   profile:
     displayName: Text Generation Web UI
   dependsOn:
