@@ -27,7 +27,7 @@ Both LocalAI and Text Generation Web UI have the ability to download LLMs and pr
 
 ## Configuring Text Generation Web UI
 
-You need to begin by downloading a large language model in the "Models" tab.
+You need to begin by downloading a large language model in the "Models" tab in the [Text Generation WebUI GUI](http://localhost:7860).
 
 Enter the following details in the download box on the right hand side, then hit the big "Download" button to grab the model.
 
@@ -37,6 +37,24 @@ File: mistral-7b-openorca.Q4_K_M.gguf
 > Mistral 7B is an exceptional model for local use. It has fast inference times and does not need very much system memory (8GB).
 
 This download will usually take several minutes.
+
+Once downloaded, reboot the container and go back to Models page of the [Text Generation WebUI GUI](http://localhost:7860) and now 'select' the `mistral-7b-openorca.Q4_K_M.gguf` as your model and click the "Reload" button. Set the model to use as many threads as you have physical CPUs (if your PC supports 8 threads, you probably have 4 CPUs, so set it to "4").
+
+Next, go to the "parameters > character" tab and choose "Backchat" from the dropdown list.
+
+Finally, head to the "Chat" tab and ask the Backchat AI a question.
+
+```text
+You: "Who was the president of the United States in 1997?"
+```
+
+The AI should respond with a reasonable answer, such as:
+
+```text
+The president of the United States in 1997 was Bill Clinton.
+```
+
+If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also try the OpenAI API calls via the API definition page in Backstage. Start with `GET` for `/Models`.
 
 ## Configuring The Chatbot UI Backend
 
