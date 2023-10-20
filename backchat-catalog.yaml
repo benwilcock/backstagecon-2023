@@ -1,5 +1,22 @@
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: tanzu
+  description: The VMware Tanzu Organization
+  links:
+    - url: http://tanzu.vmware.com/
+      title: Website
+spec: 
+  type: organization
+  profile:
+    displayName: Tanzu
+    email: tanzu@vmware.com
+    picture: https://pbs.twimg.com/profile_images/1233138813939146752/YPCsKoIa_400x400.png
+  children: []
+  
+---
+apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
   name: ben.wilcock
@@ -14,7 +31,7 @@ metadata:
       type: website
       icon: WebAsset
 spec:
-  memberOf: []
+  memberOf: [tanzu]
   profile:
     displayName: Ben Wilcock
     picture: https://pbs.twimg.com/profile_images/1577303225677615107/f0lW_xGN_400x400.jpg
@@ -32,6 +49,7 @@ spec:
     displayName: OpenAI
     email: info@openai.com
     picture: https://yt3.googleusercontent.com/UqT_vCkJIn1P2fH1pchr6lbe3xeEekY61h4bUpJkVuityqKOEtUYcNy3pLiJ5OKdj4uKA81FWE8=s176-c-k-c0x00ffffff-no-rj
+
 
 
 ####################################
