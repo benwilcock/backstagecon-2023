@@ -14,6 +14,7 @@ metadata:
       type: website
       icon: WebAsset
 spec:
+  memberOf: []
   profile:
     displayName: Ben Wilcock
     picture: https://pbs.twimg.com/profile_images/1577303225677615107/f0lW_xGN_400x400.jpg
