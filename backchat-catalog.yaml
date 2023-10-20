@@ -102,6 +102,10 @@ metadata:
       title: Website
       type: website
       icon: WebAsset
+    - url: http://localhost:8080/v1/models
+      title: API Endpoint
+      type: website
+      icon: WebAsset
   tags:
     - backchat
     - localai
@@ -125,6 +129,14 @@ metadata:
       title: Website
       type: website
       icon: WebAsset
+    - url: http://localhost:7860
+      title: GUI
+      type: website
+      icon: WebAsset
+    - url: http://localhost:5001/v1/models
+      title: API Endpoint
+      type: website
+      icon: WebAsset
   tags:
     - backchat
     - text-generation-web-ui
@@ -146,6 +158,10 @@ metadata:
   links:
     - url: https://github.com/mckaywrigley/chatbot-ui
       title: Website
+      type: website
+      icon: WebAsset
+    - url: http://localhost:3001
+      title: GUI
       type: website
       icon: WebAsset
   tags:
