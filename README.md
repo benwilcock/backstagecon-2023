@@ -1,6 +1,6 @@
 # backstagecon-2023
 
-Thanks for taking the time to see my talk at BackstageCon 2023. This folder represnets my notes and other setup necessary to recreate what I built for the demonstration of "Backchat".
+Thanks for taking the time to see my talk at BackstageCon 2023. This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
 
 ## Launching The LLM Servers and UI's
 
@@ -40,8 +40,8 @@ You need to begin by downloading a large language model in the "Models" tab in t
 
 Enter the following details in the download box on the right hand side, then hit the big "Download" button to grab the model.
 
-Download Model: [TheBloke/Mistral-7B-OpenOrca-GGUF](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)
-File: mistral-7b-openorca.Q4_K_M.gguf
+Download Model: [TheBloke/Mistral-7B-OpenOrca-GGUF](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)</p>
+File: [mistral-7b-openorca.Q4_K_M.gguf](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF/blob/main/mistral-7b-openorca.Q4_K_M.gguf)
 
 > Mistral 7B is an exceptional model for local use. It has fast inference times and does not need very much system memory (8GB).
 
