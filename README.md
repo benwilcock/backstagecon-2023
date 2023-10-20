@@ -88,20 +88,21 @@ environment:
 ...
 ```
 
-## Links for the GUIs
+## Integration Of AIs With Backstage
 
-* [Chatbot UI on localhost port 3001](http://localhost:3001)
-* [Text Generation Web UI on localhost port 7860](http://localhost:7860)
-
-## Integration With Backstage
-
-To use either UI in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate.
+To use either of these AI GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate.
 
 ## Adding Backchat TechDocs And Catalog
 
 To add a full Backchat system hierarchy and the TechDocs used in this talk to your Backstage instance, simply register the following URL into your Backstage software catalog. You can do this trough the UI, or by adding it to the catalog section of your `app-config.local.yaml` file.
 
 [https://github.com/benwilcock/backstagecon-2023/blob/main/backchat-catalog.yaml](https://github.com/benwilcock/backstagecon-2023/blob/main/backchat-catalog.yaml)
+
+## Links For The GUIs
+
+* [Chatbot UI on localhost port 3001](http://localhost:3001)
+* [Text Generation Web UI on localhost port 7860](http://localhost:7860)
+* [Backstage GUI](http://localhost:3000)
 
 ## OpenAI API Documentation
 
