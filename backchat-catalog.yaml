@@ -230,7 +230,7 @@ metadata:
 spec:
   type: openapi
   lifecycle: production
-  system: backchat
+  # system: backchat
   owner: group:openai
   definition:
     $text: https://github.com/openai/openai-openapi/blob/master/openapi.yaml
