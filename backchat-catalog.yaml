@@ -148,6 +148,8 @@ spec:
   owner: group:open-source
   profile:
     displayName: LocalAI
+  dependsOn:
+    - resource:openllama-7b-open-instruct
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -180,6 +182,8 @@ spec:
   owner: group:open-source
   profile:
     displayName: Text Generation Web UI
+  dependsOn:
+    - resource:mistral-7b
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -209,6 +213,51 @@ spec:
   dependsOn:
     - component:localai
     - component:text-generation-web-ui
+
+####################################
+# RESOURCES
+####################################
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: mistral-7b
+  description: 'Mistral 7B, the most powerful language model for its size to date.'
+  links:
+    - url: https://mistral.ai/
+      title: Mistral Website
+      type: website
+      icon: WebAsset
+  tags:
+    - large-language-model
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  system: backchat
+  profile:
+    displayName: Mistral-7B
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: openllama-7b-open-instruct
+  description: 'Instruction-tuned version of the fully trained Open LLama 7B model.'
+  links:
+    - url: https://huggingface.co/VMware/open-llama-7b-open-instruct
+      title: VMware Page On Hugging Face
+      type: website
+      icon: WebAsset
+  tags:
+    - large-language-model
+spec:
+  type: service
+  lifecycle: production
+  owner: user:ben.wilcock
+  system: backchat
+  profile:
+    displayName: "Openllama 7B Open Instruct"
 
 ######################################
 # APIs
