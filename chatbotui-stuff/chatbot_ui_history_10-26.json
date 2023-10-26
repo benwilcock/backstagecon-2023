@@ -1,0 +1,293 @@
+{
+  "version": 4,
+  "history": [
+    {
+      "id": "c592f08b-9a66-4ce8-97bc-3d4685760433",
+      "name": "Database",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Tell me the steps needed to create a database that holds the details of vehicles and their owners. In the database, a vehicle can belong to only one owner but an owner can own many vehicles. Use the SQL language to create the database, its tables, and the relationships between them. Explain each step showing the SQL required."
+        },
+        {
+          "role": "assistant",
+          "content": "```sql\nCREATE DATABASE IF NOT EXISTS `vehicles_and_owners`;\n\n-- Table vehicles\nCREATE TABLE IF NOT EXISTS `vehicles` (\n `id` INTEGER PRIMARY KEY AUTOINCREMENT,\n `make` VARCHAR(255) NOT NULL,\n `model` VARCHAR(255) NOT NULL,\n `year` INTEGER NOT NULL,\n `owner_id` INTEGER NOT NULL,\n `vehicle_type` VARCHAR(255) NOT NULL,\n `status` VARCHAR(255) NOT NULL,\n `notes` TEXT NOT NULL,\n `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),\n `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),\n PRIMARY KEY (`id`)\n);\n\n-- Table owners\nCREATE TABLE IF NOT EXISTS `owners` (\n `id` INTEGER PRIMARY KEY AUTOINCREMENT,\n `name` VARCHAR(255) NOT NULL,\n `email` VARCHAR(255) NOT NULL,\n `phone` VARCHAR(255) NOT NULL,\n `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),\n `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),\n PRIMARY KEY (`id`)\n);\n\n-- Table vehicle_owner\nCREATE TABLE IF NOT EXISTS `vehicle_owners` (\n `owner_id` INTEGER NOT NULL,\n `vehicle_id` INTEGER NOT NULL,\n PRIMARY KEY (`owner_id`, `vehicle_id`),\n FOREIGN KEY (`owner_id`) REFERENCES `owners` (`id`),\n FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE CASCADE\n);\n```\nThe steps required to create a database that holds the details of vehicles and their owners are:\n\n1. Create a new database called `vehicles_and_owners`.\n2. Create a table called `vehicles` to store vehicle information, including make, model, year, owner id, vehicle type, status, notes, and created and updated timestamps.\n3. Create a table called `owners` to store owner information, including name, email, phone, created and updated timestamps.\n4. Create a table called `vehicle_owner` to store information about the relationship between vehicles and their owners, including owner id, vehicle id, and foreign keys referencing the `owners` and `vehicles` tables."
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "6a503794-a684-48ec-a5a1-b0a8ab88e2b9",
+      "name": "Testing",
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are a quality assurance tester and an expert in JUnit testing. Write the code required to test the following Java method using JUnit. Add comments to the code explaining each line of the test. Add positive and negative tests. Think through the problem carefully, step by step.\n\n=== \npublic String fibonacciSequence(int n) { \n  int[] a = new int[n]; \n  a[0] = 0; \n  a[1] = 1; \n\n  for (int i = 2; i < n; i++) { \n    a[i] = a[i-1] + a[i-2]; \n  } \n  return Arrays.toString(a); \n}"
+        },
+        {
+          "role": "assistant",
+          "content": "```java\npackage com.example.test;\n\nimport org.junit.Test;\nimport org.junit.Before;\nimport org.junit.After;\n\npublic class FibonacciSequenceTest {\n private int[] a;\n\n @Before\n public void setUp() {\n a = new int[10];\n }\n\n @After\n public void tearDown() {\n a = null;\n }\n\n @Test\n public void testFibonacciSequence() {\n // Positive tests\n assertTrue(Arrays.equals(\"0\", fibonacciSequence(0)));\n assertTrue(Arrays.equals(\"1\", fibonacciSequence(1)));\n assertTrue(Arrays.equals(\"1\", fibonacciSequence(2)));\n assertTrue(Arrays.equals(\"2\", fibonacciSequence(3)));\n assertTrue(Arrays.equals(\"3\", fibonacciSequence(4)));\n assertTrue(Arrays.equals(\"5\", fibonacciSequence(5)));\n assertTrue(Arrays.equals(\"8\", fibonacciSequence(6)));\n assertTrue(Arrays.equals(\"13\", fibonacciSequence(7)));\n assertTrue(Arrays.equals(\"21\", fibonacciSequence(8)));\n assertTrue(Arrays.equals(\"34\", fibonacciSequence(9)));\n assertTrue(Arrays.equals(\"55\", fibonacciSequence(10)));\n\n // Negative tests\n assertFalse(Arrays.equals(\"-1\", fibonacciSequence(-1)));\n assertFalse(Arrays.equals(\"-2\", fibonacciSequence(-2)));\n assertFalse(Arrays.equals(\"-3\", fibonacciSequence(-3)));\n assertFalse(Arrays.equals(\"-4\", fibonacciSequence(-4)));\n assertFalse(Arrays.equals(\"-5\", fibonacciSequence(-5)));\n assertFalse(Arrays.equals(\"-6\", fibonacciSequence(-6)));\n assertFalse(Arrays.equals(\"-7\", fibonacciSequence(-7)));\n assertFalse(Arrays.equals(\"-8\", fibonacciSequence(-8)));\n assertFalse(Arrays.equals(\"-9\", fibonacciSequence(-9)));\n assertFalse(Arrays.equals(\"-10\", fibonacciSequence(-10)));\n }\n}"
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "87b52438-82c2-4843-89d6-640d5425c23f",
+      "name": "DevOps",
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are an IT systems operator and an expert in Kubenetes platform management. I need to deploy an NGINX server to my Kubernetes cluster. Show me all the configuration needed to deploy the NGINX server as a Kubernetes service. Include the pod, deployment, replicaset, and service details.The service should be reliable - able to handle both load and failures."
+        },
+        {
+          "role": "assistant",
+          "content": "Here is the detailed configuration for deploying an NGINX server as a Kubernetes service:\n\nPOD:\n```yaml\napiVersion: v1\nkind: Pod\nmetadata:\n name: nginx-server\nspec:\n containers:\n - name: nginx\n image: nginx:latest\n ports:\n - containerPort: 80\n```\n\nDeployment:\n```yaml\napiVersion: apps/v1\nkind: Deployment\nmetadata:\n name: nginx-deployment\nspec:\n replicas: 3\n selector:\n app: nginx\n template:\n metadata:\n labels:\n app: nginx\n spec:\n containers:\n - name: nginx\n image: nginx:latest\n ports:\n - containerPort: 80\n```\n\nReplicaSet:\n```yaml\napiVersion: apps/v1\nkind: ReplicaSet\nmetadata:\n name: nginx-rs\nspec:\n replicas: 3\n selector:\n app: nginx\n template:\n metadata:\n labels:\n app: nginx\n spec:\n containers:\n - name: nginx\n image: nginx:latest\n ports:\n - containerPort: 80\n```\n\nService:\n```yaml\napiVersion: v1\nkind: Service\nmetadata:\n name: nginx-service\nspec:\n selector:\n app: nginx\n ports:\n - protocol: TCP\n port: 80\n targetPort: 80\n```"
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "f9064d4b-26d8-42a9-912a-e6c585f9bda5",
+      "name": "Documentation",
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are a creative technical writer and an expert with JavaDoc. Take a look at the following java method.\n\n=== \npublic String fibonacciSequence(int n) { \n  int[] a = new int[n]; \n  a[0] = 0; \n  a[1] = 1; \n\n  for (int i = 2; i < n; i++) { \n    a[i] = a[i-1] + a[i-2]; \n  } \n  return Arrays.toString(a); \n} \n===\n\nAdd the JavaDoc required to fully describe what the method does. Your JavaDoc should be descriptive and verbose. Include details the reader will find fascinating. Think carefully and check your answer."
+        },
+        {
+          "role": "assistant",
+          "content": "```java\n/**\n * Returns the Fibonacci sequence of the specified length.\n * \n * @param n The length of the Fibonacci sequence to return.\n * @return A string representation of the Fibonacci sequence.\n */\npublic String fibonacciSequence(int n);\n```"
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "ea1ac147-95ff-4e39-bd45-eed4a04182d1",
+      "name": "Technical Writing",
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are a database expert. I am a technical writer working on database documentation used by people who are new to the SQL language. Explain to me what the SQL \"JOIN\" command is used for. Show an example of a vehicles table and an owners table being joined. Show the results of the JOIN in a table."
+        },
+        {
+          "role": "assistant",
+          "content": "The SQL join command is used to combine data from two or more tables based on common fields or keys. In your example, let's say you have a Vehicles table with columns for the vehicle ID (VehicleID), make (Make), model (Model), and year (Year). And you have an Owners table with columns for the owner ID (OwnerID) and the vehicle ID (VehicleID).\n\nTo join these tables, you can use a SQL statement like this:\n```sql\nSELECT * FROM Vehicles JOIN Owners ON Vehicles.VehicleID = Owners.VehicleID\n```\n\nThis will return all rows from the Vehicles table where the VehicleID field matches any row in the Owners table with a matching OwnerID field. In your example, this would return rows for all vehicles that have both an owner and a make/model/year match.\n\nHere's what the result of that statement might look like:\n```sql\n+----+---------+----------+------------+\n| VehicleID | Make | Model | Year |\n+----+---------+----------+------------+\n| 123456 | Ferrari | F12berlinetta | 2018 |\n| 789012 | Lamborghini | Aventador | 2018 |\n| 987654 | Porsche | 911 | 2013 |\n+----+---------+----------+------------+"
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "0315bcf7-98be-4dd6-943f-75100163c32c",
+      "name": "Busywork (360 feedback)",
+      "messages": [
+        {
+          "role": "user",
+          "content": "I am a colleague of Bob and I need to contribute some thoughts to his 360 degree evaluation form. Bob is fantastic at coding and works well with his peers. Bob and I are friends and have a good rapport. Bob has told me would like to become a leader someday, but Bob is quite introverted and struggles to take the lead effectively in group situations. Help me to write some advice for Bob. Offer him encouragement and practical tips that might help him increase his effectiveness as a leader. Be concise."
+        },
+        {
+          "role": "assistant",
+          "content": "Bob,\n\nCongratulations on being selected to participate in your 360 degree evaluation! I know you will do great things as a leader, and I am here to help you along the way. As an introvert, it can be challenging to lead others effectively, but there are many ways you can improve your leadership skills. Here are some tips:\n\n1. Take time to listen and learn from others. Ask questions and actively seek out different perspectives. This will help you better understand your team and the challenges they face.\n2. Practice active listening. Make sure you are fully engaged in conversations, and make an effort to repeat back what others say to ensure you have understood them correctly.\n3. Seek feedback from those around you. Ask for honest and constructive feedback on a regular basis, and use this information to improve your leadership skills.\n4. Practice self-awareness. Take time to reflect on your strengths and weaknesses as a leader, and be open to learning new skills and developing new habits.\n5. Embrace vulnerability. Admit when you are wrong and take responsibility for your actions. This will help build trust with your team and encourage them to speak up and share their own perspectives.\n6. Be patient and kind. Remember that people may have different opinions and approaches, and it is important to respect and value each person's unique perspective.\n7. Practice positive reinforcement. Make a conscious effort to recognize and reward the efforts of your team members, both individually and as a group.\n8. Take initiative and lead by example. Assume positive intent in others, and take ownership for getting things done. This will help build confidence and trust within your team.\n9. Seek out opportunities to step up and take on new responsibilities. Challenge yourself to try new things and learn from the experience.\n10. Remember that leadership is a journey, not a destination. Be patient with yourself and celebrate your successes along the way."
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "bc9bf3c2-7702-476f-820a-e0bcbaa1827b",
+      "name": "Creating Data",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Show me how to write a JSON file that describes three people. For each person include attributes such as their id, first name, last name, age, eye color, country of residence, and date of birth (in YYYY-MM-DD format). Use markdown in your response."
+        },
+        {
+          "role": "assistant",
+          "content": "```json\n{\n \"people\": [\n {\n \"id\": 1,\n \"firstName\": \"John\",\n \"lastName\": \"Doe\",\n \"age\": 30,\n \"eyeColor\": \"brown\",\n \"countryOfResidence\": \"USA\",\n \"dateOfBirth\": \"2000-01-01\"\n },\n {\n \"id\": 2,\n \"firstName\": \"Jane\",\n \"lastName\": \"Doe\",\n \"age\": 35,\n \"eyeColor\": \"blue\",\n \"countryOfResidence\": \"UK\",\n \"dateOfBirth\": \"1980-06-01\"\n },\n {\n \"id\": 3,\n \"firstName\": \"Alex\",\n \"lastName\": \"Doe\",\n \"age\": 25,\n \"eyeColor\": \"green\",\n \"countryOfResidence\": \"France\",\n \"dateOfBirth\": \"1995-07-01\"\n }\n ]\n}"
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "82758e8d-dfd7-4aba-8363-9dc4999fe367",
+      "name": "Unfamilliar Languages",
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are an expert in the Python programming language. I do not know Python at all. When creating new Python applications, which frameworks might help me work faster and reduce the complexity of my code? Give your reasoning for each suggestion and explain why they might be worth further investigation."
+        },
+        {
+          "role": "assistant",
+          "content": "Here are some suggestions for Python frameworks that may help you work more efficiently and reduce the complexity of your code:\n\n1. Django: Django is a popular web framework that provides a comprehensive set of tools for building complex web applications, including automatic database structure creation, template rendering, and URL routing. It is known for its ease of use and rapid development, making it a good choice for beginners and experienced developers alike.\n\n2. Flask: Flask is a lightweight, high-performance web framework that can be used to build RESTful APIs or full-fledged web applications. It provides a simple and intuitive API, making it easy to get up and running quickly, while still offering powerful features such as templating, caching, and routing.\n\n3. Pyramid: Pyramid is a flexible and modular web framework that can be used for a wide range of projects, from small to large-scale applications. It provides a simple yet powerful API, making it easy to build complex applications with minimal code, while still offering advanced features such as authentication, caching, and routing.\n\n4. Bottle: Bottle is a lightweight web framework that can be used for building RESTful APIs or full-fledged web applications. It provides a simple and intuitive API, making it easy to get up and running quickly, while still offering powerful features such as templating, caching, and routing.\n\n5. Asyncio: Asyncio is a standard library for async programming in Python that can be used to improve the performance of your applications by handling I/O operations asynchronously. It provides a simple API for writing asynchronous code, making it easier to write high-performance applications with minimal complexity.\n\nThese are just a few suggestions, and the best choice will depend on your specific needs and preferences."
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "f923c5d3-5b2d-4077-9085-06ea84eb230b",
+      "name": "Designing",
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are focus group consisting of 10 randomly selected car users. 20% of the users are young adults, 40% of the users are middle aged, and 40% of the users are retired. I am a software designer designing a new automotive software product to be used inside a car. Should I design the software to have multiple GUI themes and characters like \"foxes\" or \"eggheads\" or should I design the software to be plain and functional with no themes or characters? Come to a decision as a group and give me your answer."
+        },
+        {
+          "role": "assistant",
+          "content": "As a group, we decided that it would be best to design the automotive software to have multiple GUI themes and characters like \"foxes\" or \"eggheads\". This is because different demographics of users (young adults, middle aged, and retired) prefer different themes and characters, so having a mix of both will appeal to the widest range of users. Additionally, having fun and engaging characters can make the software more enjoyable for users, improving their overall experience."
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    },
+    {
+      "id": "f63d65a1-2c60-4840-8bd9-2a8f403ea16a",
+      "name": "Research",
+      "messages": [
+        {
+          "role": "user",
+          "content": "How many Java coders are there?"
+        },
+        {
+          "role": "assistant",
+          "content": "There are approximately 12 million active developers on Github who have tagged their repositories with the \"java\" keyword. However, this does not necessarily mean that all of them are professional Java coders working in the field as a job."
+        },
+        {
+          "role": "user",
+          "content": "If I am creating a new software application, is Java a good choice of language?"
+        },
+        {
+          "role": "assistant",
+          "content": "As one of the most popular programming languages, Java is a great choice for building enterprise-level applications and large-scale systems. It's also a good choice if you want to develop applications that run on both the server and client sides."
+        },
+        {
+          "role": "user",
+          "content": "What about games? Are there many games written in java? How does Java compare to other languages when writing games?"
+        },
+        {
+          "role": "assistant",
+          "content": "There are many games written in Java, including some high-profile titles such as Minecraft and Candy Crush. Java is a popular language for game development due to its versatility and ease of use, and it is well suited to both 2D and 3D graphics. However, other languages such as C++ and Python are also commonly used for game development, particularly for more advanced games that require low-level hardware access or real-time performance."
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
+    }
+  ],
+  "folders": [],
+  "prompts": [
+    {
+      "id": "2b3bbb7c-5f78-4ab9-beb8-89b0d4aaca85",
+      "name": "VMwareOpenInstruct",
+      "description": "Prompt for open instruct",
+      "content": "Below is an instruction that describes a task. Write a response that appropriately completes the request. Think carefully about your answer. Use markdown where appropriate. Be concise.\n\n### Instruction:\n{{.Input}}\n\n### Response:",
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "folderId": null
+    },
+    {
+      "id": "f778263f-8878-4f25-aefd-01069730e482",
+      "name": "Mistral",
+      "description": "",
+      "content": "<|im_start|>system\nYou are \"Backchat\" - an AI Large Language Model. Backchat has been trained to answer questions, provide recommendations, and help with decision making. Backchat follows user requests. Backchat thinks outside the box. Backchat always explains their reasoning but does so concisely. Backchat is an expert in computer programming using multiple languages. Backchat is also an expert in manipulating data. Backchat uses markdown in responses where appropriate.<|im_end|>\n<|im_start|>user\n{prompt}<|im_end|>\n<|im_start|>backchat\n{response}",
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "folderId": null
+    },
+    {
+      "id": "1d8eb29b-48cd-4e66-b8b8-d8810b67dff9",
+      "name": "JavaDoccing",
+      "description": "Use this prompt to generate JavaDoc",
+      "content": "You are a creative technical writer and an expert with JavaDoc. Take a look at the following java method.\n\n=== \n{{javacode}}\n===\n\nAdd the JavaDoc required to fully describe what the method does. Your JavaDoc should be descriptive and verbose. Include details the reader will find fascinating. Think carefully and check your answer.",
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "folderId": null
+    }
+  ]
+}
