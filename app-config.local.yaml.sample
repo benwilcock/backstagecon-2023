@@ -1,0 +1,11 @@
+# Backstage override configuration for your local development environment
+ai_server:
+  url: "http://localhost:3001" # Specifies where top find the Chatbot UI GUI
+  #url: "http://localhost:7860" # Specifies where to find the Text Generation WebUI
+
+catalog:
+  locations:
+    - type: url
+      target: https://github.com/benwilcock/backstagecon-2023/blob/main/backchat-catalog.yaml
+  rules:
+    - allow: [Component, API, Resource, System, Domain, Location, Group, User]

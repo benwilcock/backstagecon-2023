@@ -8,7 +8,7 @@ services:
   local-ai:
     container_name: local-ai-api
     # See https://quay.io/repository/go-skynet/local-ai?tab=tags for versions.
-    image: quay.io/go-skynet/local-ai:v1.30.0 # was: quay.io/go-skynet/local-ai:v1.20.1
+    image: quay.io/go-skynet/local-ai:v1.30.0 # was: quay.io/go-skynet/local-ai:v1.25.0
     # As initially LocalAI will download the models defined in PRELOAD_MODELS
     # you might need to tweak the healthcheck values here according to your network connection.
     # Here we give a timespan of 20m to download all the required files.
@@ -59,7 +59,7 @@ services:
       - 5005:5005  # Default streaming port
       - 5001:5001  # Default OpenAI compatible API port (needs openai extension running - used by Chatbot UI)
     volumes:
-      - ./text-generation-webui-config/chatlogs/Assistant:/logs/chat/Assistant/
+      - ./text-generation-webui-config/chatlogs/Assistant:/app/logs/chat/Assistant
       - ./text-generation-webui-config/characters:/app/characters
       - ./text-generation-webui-config/loras:/app/loras
       - ./text-generation-webui-config/models:/app/models
@@ -73,6 +73,7 @@ services:
         source: ./text-generation-webui-config/settings.yaml
         target: /app/settings.yaml
         read_only: false
+        # /app/logs/chat/Assistant
     logging:
       driver:  json-file
       options:

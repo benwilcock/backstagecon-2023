@@ -1,0 +1,22 @@
+{
+    "internal": [
+        [
+            "<|BEGIN-VISIBLE-CHAT|>",
+            "How can I help you today?"
+        ],
+        [
+            "You are a focus group consisting of 10 randomly selected car users. 20% of the users are young adults, 40% of the users are middle aged, and 40% of the users are retired. I am a software designer designing a new automotive software product to be used inside a car. Should I design the software to have multiple GUI themes and characters like \"foxes\" or \"eggheads\" or should I design the software to be plain and functional with no themes or characters? Come to a decision as a group and give me your answer.",
+            "Based on our focus group, it seems that there is a diverse demographic of car users involved. To accommodate all age groups, we recommend designing the automotive software with a neutral theme that appeals to everyone's preferences. This means avoiding too many GUI themes or characters and opting for a clean, modern design without distractions or unnecessary elements. By choosing a simple yet functional interface, it will cater to the needs of all age groups - young adults, middle-aged, and retired users alike."
+        ]
+    ],
+    "visible": [
+        [
+            "",
+            "How can I help you today?"
+        ],
+        [
+            "You are a focus group consisting of 10 randomly selected car users. 20% of the users are young adults, 40% of the users are middle aged, and 40% of the users are retired. I am a software designer designing a new automotive software product to be used inside a car. Should I design the software to have multiple GUI themes and characters like &quot;foxes&quot; or &quot;eggheads&quot; or should I design the software to be plain and functional with no themes or characters? Come to a decision as a group and give me your answer.",
+            "Based on our focus group, it seems that there is a diverse demographic of car users involved. To accommodate all age groups, we recommend designing the automotive software with a neutral theme that appeals to everyone&#x27;s preferences. This means avoiding too many GUI themes or characters and opting for a clean, modern design without distractions or unnecessary elements. By choosing a simple yet functional interface, it will cater to the needs of all age groups - young adults, middle-aged, and retired users alike."
+        ]
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "internal": [
+        [
+            "<|BEGIN-VISIBLE-CHAT|>",
+            "How can I help you today?"
+        ],
+        [
+            "Create some JSON test data that contains an array of five vehicles. Include id, manufacturer, model, model year, and user rating.",
+            "Here is a JSON object with the requested information:\n```json\n[\n  {\n    \"id\": 1,\n    \"manufacturer\": \"Tesla\",\n    \"model\": \"Model S\",\n    \"model_year\": 2021,\n    \"user_rating\": 4.5\n  },\n  {\n    \"id\": 2,\n    \"manufacturer\": \"Ford\",\n    \"model\": \"Mustang\",\n    \"model_year\": 2020,\n    \"user_rating\": 3.8\n  },\n  {\n    \"id\": 3,\n    \"manufacturer\": \"Chevrolet\",\n    \"model\": \"Corvette\",\n    \"model_year\": 2019,\n    \"user_rating\": 4.2\n  },\n  {\n    \"id\": 4,\n    \"manufacturer\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"model_year\": 2020,\n    \"user_rating\": 3.9\n  },\n  {\n    \"id\": 5,\n    \"manufacturer\": \"Honda\",\n    \"model\": \"Civic\",\n    \"model_year\": 2018,\n    \"user_rating\": 4.1\n  }\n]\n```\nThis JSON object contains an array of five vehicles with their respective information such as id, manufacturer, model, model year, and user rating."
+        ]
+    ],
+    "visible": [
+        [
+            "",
+            "How can I help you today?"
+        ],
+        [
+            "Create some JSON test data that contains an array of five vehicles. Include id, manufacturer, model, model year, and user rating.",
+            "Here is a JSON object with the requested information:\n```json\n[\n  {\n    &quot;id&quot;: 1,\n    &quot;manufacturer&quot;: &quot;Tesla&quot;,\n    &quot;model&quot;: &quot;Model S&quot;,\n    &quot;model_year&quot;: 2021,\n    &quot;user_rating&quot;: 4.5\n  },\n  {\n    &quot;id&quot;: 2,\n    &quot;manufacturer&quot;: &quot;Ford&quot;,\n    &quot;model&quot;: &quot;Mustang&quot;,\n    &quot;model_year&quot;: 2020,\n    &quot;user_rating&quot;: 3.8\n  },\n  {\n    &quot;id&quot;: 3,\n    &quot;manufacturer&quot;: &quot;Chevrolet&quot;,\n    &quot;model&quot;: &quot;Corvette&quot;,\n    &quot;model_year&quot;: 2019,\n    &quot;user_rating&quot;: 4.2\n  },\n  {\n    &quot;id&quot;: 4,\n    &quot;manufacturer&quot;: &quot;Toyota&quot;,\n    &quot;model&quot;: &quot;Camry&quot;,\n    &quot;model_year&quot;: 2020,\n    &quot;user_rating&quot;: 3.9\n  },\n  {\n    &quot;id&quot;: 5,\n    &quot;manufacturer&quot;: &quot;Honda&quot;,\n    &quot;model&quot;: &quot;Civic&quot;,\n    &quot;model_year&quot;: 2018,\n    &quot;user_rating&quot;: 4.1\n  }\n]\n```\nThis JSON object contains an array of five vehicles with their respective information such as id, manufacturer, model, model year, and user rating."
+        ]
+    ]
+}

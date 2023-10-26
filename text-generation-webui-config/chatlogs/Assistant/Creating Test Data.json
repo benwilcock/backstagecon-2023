@@ -1,0 +1,14 @@
+{
+    "internal": [
+        [
+            "Write a JSON file that contains an array of three people. For each person in the array include attributes such as their id, first name, last name, age, eye color, country of residence, and date of birth (in YYYY-MM-DD format). Use markdown in your response. Be concise.",
+            "Here is a JSON file with an array containing three people's information:\n\n```json\n[\n  {\n    \"id\": 1,\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"age\": 35,\n    \"eyeColor\": \"blue\",\n    \"countryOfResidence\": \"USA\",\n    \"dateOfBirth\": \"1986-04-25\"\n  },\n  {\n    \"id\": 2,\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Smith\",\n    \"age\": 30,\n    \"eyeColor\": \"brown\",\n    \"countryOfResidence\": \"Canada\",\n    \"dateOfBirth\": \"1990-07-28\"\n  },\n  {\n    \"id\": 3,\n    \"firstName\": \"Mark\",\n    \"lastName\": \"Wilson\",\n    \"age\": 42,\n    \"eyeColor\": \"green\",\n    \"countryOfResidence\": \"Australia\",\n    \"dateOfBirth\": \"1978-03-06\"\n  }\n]\n```\n\nIn this JSON file, there are three people with their respective ids: John Doe (id: 1), Jane Smith (id: 2), and Mark Wilson (id: 3). The data for each person includes their first name, last name, age, eye color, country of residence, and date of birth."
+        ]
+    ],
+    "visible": [
+        [
+            "Write a JSON file that contains an array of three people. For each person in the array include attributes such as their id, first name, last name, age, eye color, country of residence, and date of birth (in YYYY-MM-DD format). Use markdown in your response. Be concise.",
+            "Here is a JSON file with an array containing three people&#x27;s information:\n\n```json\n[\n  {\n    &quot;id&quot;: 1,\n    &quot;firstName&quot;: &quot;John&quot;,\n    &quot;lastName&quot;: &quot;Doe&quot;,\n    &quot;age&quot;: 35,\n    &quot;eyeColor&quot;: &quot;blue&quot;,\n    &quot;countryOfResidence&quot;: &quot;USA&quot;,\n    &quot;dateOfBirth&quot;: &quot;1986-04-25&quot;\n  },\n  {\n    &quot;id&quot;: 2,\n    &quot;firstName&quot;: &quot;Jane&quot;,\n    &quot;lastName&quot;: &quot;Smith&quot;,\n    &quot;age&quot;: 30,\n    &quot;eyeColor&quot;: &quot;brown&quot;,\n    &quot;countryOfResidence&quot;: &quot;Canada&quot;,\n    &quot;dateOfBirth&quot;: &quot;1990-07-28&quot;\n  },\n  {\n    &quot;id&quot;: 3,\n    &quot;firstName&quot;: &quot;Mark&quot;,\n    &quot;lastName&quot;: &quot;Wilson&quot;,\n    &quot;age&quot;: 42,\n    &quot;eyeColor&quot;: &quot;green&quot;,\n    &quot;countryOfResidence&quot;: &quot;Australia&quot;,\n    &quot;dateOfBirth&quot;: &quot;1978-03-06&quot;\n  }\n]\n```\n\nIn this JSON file, there are three people with their respective ids: John Doe (id: 1), Jane Smith (id: 2), and Mark Wilson (id: 3). The data for each person includes their first name, last name, age, eye color, country of residence, and date of birth."
+        ]
+    ]
+}
