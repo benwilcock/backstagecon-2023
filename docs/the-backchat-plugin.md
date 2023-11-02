@@ -17,11 +17,11 @@ Thanks to it's simplicity, Backchat is very flexible. You can use any chat GUI y
 
 ## Use Cases
 
-There are a number of reasons why it could be helpful for developers to have access to an AI in Backstage.
+There are a number of reasons why it could be helpful for developers to have access to an AI in Backstage. Here is just a selection of the potential use cases where access to generative AI could boost your productivity.
 
 ![Backchat use cases](./images/backchat-use-cases-1.png)
 ![More Backchat use cases](./images/backchat-use-cases-2.png)
 
 ## Roadmap
 
-What I'd really like to do is to transform this Backchat plugin into a fully integrated OpenAI API client, but I need your help. Interested? Contact me directly on [LinkedIn](https://www.linkedin.com/in/benwilcock/) or GitHub if you'd like to contribute!
+What I'd really like to do is transform this Backchat plugin into a fully integrated open-source OpenAI API client for Backstage, but I need your help! Interested? Contact me directly on [LinkedIn](https://www.linkedin.com/in/benwilcock/) or GitHub if you'd like to contribute!
