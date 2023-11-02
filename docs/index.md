@@ -12,7 +12,9 @@ Don't be a stranger!
 
     To get the Backchat plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. 
 
-!!! info "The Backchat AI Servers & GUIs"
+    To learn more about what the Backchat plugin PoC is meant to do and why, see the [the backchat plugin page](./the-backchat-plugin.md).
+
+!!! info "The Backchat Plugin's AI Servers & GUIs"
 
     The AI servers and GUIs used by the plugin can be started using the instructions on the ["Starting The AI Servers & GUIs"](./start-ai-servers.md) or by reading the [README](https://github.com/benwilcock/backstagecon-2023/blob/main/README.md) (most up to date).
 
