@@ -1,8 +1,10 @@
-I created the Backchat plugin as a proof of concept. The goal was to give Backstage users a flavor of what it might be like to use generative AI from within the Backstage GUI.
+I created the Backchat plugin as a **proof of concept**. The goal was to give Backstage users a flavor of what it might be like to use generative AI from within the Backstage GUI. This prevented the need to for me to leave Backstage to visit external AI tools and helped keep me productive.
 
 ![Introducing Backchat](./images/backchat-intro.png)
 
-However, in building this plugin I realized that there is always going to be a need for private AI options and flexibility when it comes to which large language models an organization wants it's developers to use (and possibly train). If you share this vision, why not contribute?
+## Benefits
+
+In the process of building this proof of concept I realized that there is always going to be a need for private AI options and flexibility when it comes to which large language models an organization wants it's developers to use (and possibly train). If you share this vision, why not contribute?
 
 ![Backchat benefits](./images/backchat-benefits.png)
 
