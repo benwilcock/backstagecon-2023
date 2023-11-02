@@ -1,0 +1,22 @@
+{
+    "internal": [
+        [
+            "<|BEGIN-VISIBLE-CHAT|>",
+            "How can I help you today?"
+        ],
+        [
+            "tell me how to control the size of images in markdown pages. be concise.",
+            "To control the size of images in Markdown, follow these steps:\n\n1. Use an image reference with a width and height attribute: For example, include `width` and `height` attributes within your HTML tag for images (e.g., `<img src=\"image.jpg\" alt=\"\" width=\"200px\" height=\"150px\">`).\n\n2. Use CSS to control the size of images: Apply CSS rules targeting image elements with a specific class or ID, such as:\n```.css\n  img {\n    max-width: 100%;\n    height: auto; /* Maintain aspect ratio */\n  }\n}\n.responsive-image {\n  width: 300px;\n  height: 200px;\n}\n```\nIn your Markdown, reference the image with a class or ID attribute (e.g., `![Alt text](/path/to/img.jpg \"Title\"){: .responsive-image }`).\n\n3. Use HTML5 figures and captions: Wrap your images in a figure element and add caption attributes to control the size of images with captions (e.g., `<figure><img src=\"/path/to/img.jpg\" alt=\"Alternative text\" width=\"200px\" height=\"150px\"> <figcaption>Caption</figcaption></figure>`).\n\nRemember to place these code snippets in your Markdown file, usually within the YAML Front Matter or at the beginning of the document."
+        ]
+    ],
+    "visible": [
+        [
+            "",
+            "How can I help you today?"
+        ],
+        [
+            "tell me how to control the size of images in markdown pages. be concise.",
+            "To control the size of images in Markdown, follow these steps:\n\n1. Use an image reference with a width and height attribute: For example, include `width` and `height` attributes within your HTML tag for images (e.g., `&lt;img src=&quot;image.jpg&quot; alt=&quot;&quot; width=&quot;200px&quot; height=&quot;150px&quot;&gt;`).\n\n2. Use CSS to control the size of images: Apply CSS rules targeting image elements with a specific class or ID, such as:\n```.css\n  img {\n    max-width: 100%;\n    height: auto; /* Maintain aspect ratio */\n  }\n}\n.responsive-image {\n  width: 300px;\n  height: 200px;\n}\n```\nIn your Markdown, reference the image with a class or ID attribute (e.g., `![Alt text](/path/to/img.jpg &quot;Title&quot;){: .responsive-image }`).\n\n3. Use HTML5 figures and captions: Wrap your images in a figure element and add caption attributes to control the size of images with captions (e.g., `&lt;figure&gt;&lt;img src=&quot;/path/to/img.jpg&quot; alt=&quot;Alternative text&quot; width=&quot;200px&quot; height=&quot;150px&quot;&gt; &lt;figcaption&gt;Caption&lt;/figcaption&gt;&lt;/figure&gt;`).\n\nRemember to place these code snippets in your Markdown file, usually within the YAML Front Matter or at the beginning of the document."
+        ]
+    ]
+}

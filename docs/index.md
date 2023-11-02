@@ -1,17 +1,18 @@
-![Backchat](./images/backchat-avatar.png){ width="500" }
+Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocatedeventsna2023.sched.com/event/07a22acf572c9ba6ac78a3fff50c6e7d). This folder represents my notes for the talk and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
 
-Your developers will :heart: Backchat! Tanzu Developer Portal makes creating, discovering, and managing enterprise software faster and more productive for everyone! With Tanzu Developer Portal, applications and APIs deployed across your business become easier to find, easier to understand, and easier to control. 
+[Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
 
-!!! tip "Proudly Based On [Backstage](https://backstage.io)"
+## Talk Outline
 
-    Tanzu Developer Portal is based on ~[![Backstage](images/Backstage-Full-BlackBG.png "Backstage"){ width="122" }](https://backstage.io)~ the open-source developer portal from Spotify.  Backstage enjoys a vibrant user community and a fast growing ecosystem of useful extensions called "[plugins](https://backstage.io/plugins/ "plugins")". Many leading platform vendors (including  VMware) are contributing [code](https://github.com/backstage "source code") to the Backstage project to ensure the developer experience is as rich and rewarding as possible.
+| **Title**                                                     | **Outline**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **GenAI In Backstage - Turbocharge Your Developer Productivity!** | Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses. |
 
-*[GUI]: Graphical User Interface (sometimes shortened to UI).
-*[IDP]: Internal Developer Platform - a system intended to make iy easier to develop, secure, operate, and manage applications running on your cloud infrastructure.
+## The "Backchat" Plugin
 
-!!! info "Feature Highlights & Getting Started"
-    
-    The [feature highlights](./features.md) of Tanzu Developer Portal include an enhanced developer experience and greater developer productivity. Check out our [Getting Started Guide](./get-started.md) to quickly get up to speed with these features.
+To get the plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs used by the plugin can be started using the instructions in ["Starting The AI Servers & GUIs"](./start-ai-servers.md). 
+
+
 
 
 

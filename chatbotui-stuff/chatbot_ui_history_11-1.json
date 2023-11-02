@@ -246,6 +246,29 @@
       "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
       "temperature": 0.7,
       "folderId": null
+    },
+    {
+      "id": "747d27a9-6464-4aae-ab14-15ea8b183918",
+      "name": "Sample Question",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Is PHP a good choice of programming language for a new microservice application and which alternative languages and frameworks should I consider? Give your reasoning."
+        },
+        {
+          "role": "assistant",
+          "content": "PHP is a popular choice for developing web-based applications, particularly those that run on the Linux operating system. However, given its age (it was first released in 1995), it may not be the best choice for building a new microservice application. PHP has been surpassed by newer languages such as Python and Go, which offer improved performance and more modern features.\n\nIf you're considering a microservice architecture, you should consider using Python or Go instead of PHP. Both are well-supported by the open source community and have a strong track record of reliability and scalability. They also offer better support for high-performance applications, such as those that require real-time communication or heavy processing workloads.\n\nIf you're building a web application, you may still want to consider PHP for its familiarity and ease of use. However, if you're looking to develop a more complex system with multiple components, Python or Go would be better choices."
+        }
+      ],
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "prompt": "You are ChatGPT, a large language model trained by OpenAI. Follow the user's instructions carefully. Respond using markdown.",
+      "temperature": 0.7,
+      "folderId": null
     }
   ],
   "folders": [],
@@ -281,6 +304,19 @@
       "name": "JavaDoccing",
       "description": "Use this prompt to generate JavaDoc",
       "content": "You are a creative technical writer and an expert with JavaDoc. Take a look at the following java method.\n\n=== \n{{javacode}}\n===\n\nAdd the JavaDoc required to fully describe what the method does. Your JavaDoc should be descriptive and verbose. Include details the reader will find fascinating. Think carefully and check your answer.",
+      "model": {
+        "id": "gpt-3.5-turbo",
+        "name": "GPT-3.5",
+        "maxLength": 12000,
+        "tokenLimit": 4000
+      },
+      "folderId": null
+    },
+    {
+      "id": "85f25693-9484-4e3b-82bd-0747fb2ce10e",
+      "name": "Sample prompt",
+      "description": "A test question",
+      "content": "Is PHP a good choice of programming language for a new microservice application and which alternative languages and frameworks should I consider? Give your reasoning.",
       "model": {
         "id": "gpt-3.5-turbo",
         "name": "GPT-3.5",

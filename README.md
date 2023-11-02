@@ -1,36 +1,36 @@
-# Ben Wilcock @ BackstageCon-2023
+# Generative AI In Backstage | Ben Wilcock @ BackstageCon-2023
 
 Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocatedeventsna2023.sched.com/event/07a22acf572c9ba6ac78a3fff50c6e7d). This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
 
 [Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
 
-## Talk Synopsis
+## Talk Outline
 
 | **Title**                                                     | **Outline**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **GenAI In Backstage - Turbocharge Your Developer Productivity!** | Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses. |
 
-## Launching The LLM Servers and UI's
+## The "Backchat" Plugin
 
-You can bring up the background AI servers and GUIs with:
+To get the plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs used by the plugin can be started using the instructions below. 
 
-```bash
-docker compose up -d
-```
+## Launching The LLM Servers and GUI's
 
-You can tail the logs to see the status of things with:
+Once you have cloned this repo locally, you can bring up the background AI servers and GUIs for Backchat using Docker compose (requires [Docker](https://docker.com)).
 
 ```bash
-docker compose logs --follow
+git clone https://github.com/benwilcock/backstage-plugin-backchat.git
+cd backstage-plugin-backchat
+docker compose up
 ```
 
 ## Notes On This Setup
 
-There are three servers in this setup. 
+There are three containers in this setup. 
 
-* [LocalAI](https://localai.io) (provides backend only)
-* [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) (provides frontend only)
-* [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui) (provides both backend and frontend)
+* [LocalAI](https://localai.io) (provides a backend AI server only)
+* [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) (provides frontend AI client only)
+* [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui) (provides both an AI backend and frontend)
 
 Both LocalAI and Text Generation Web UI have the ability to download LLMs and provide an OpenAI API for compatibility with various frontends. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend.
 

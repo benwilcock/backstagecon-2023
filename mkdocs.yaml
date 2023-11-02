@@ -2,9 +2,9 @@ site_name: backchat
 site_description: BackstageCon 2023
 site_author: user:ben.wilcock
 nav:
-  - "Welcome To GenAI @ BackstageCon": index.md
-  # - "MKDocs Extensions": mkdocs-extensions.md  
-  # - 'Tanzu Labs - Modernization Recipes':
+  - "Generative AI In Backstage | Ben Wilcock @ BackstageCon NA 2023": index.md
+  - "Starting The AI Servers & GUIs": start-ai-servers.md  
+  - "The Backchat Plugin": the-backchat-plugin.md
   #   - 'REST API Design': recipes/rest-api-design.md
   #   - 'REST API Versioning' : recipes/rest-api-versioning.md
   #   - 'Get Started With Git': recipes/get-started-with-git.md
