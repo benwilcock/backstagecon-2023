@@ -5,7 +5,7 @@ nav:
   - "Introduction": index.md
   - "The Backchat Plugin": the-backchat-plugin.md
   - "Starting Backchat's AI Servers & GUIs": start-ai-servers.md  
-  - "BackstageCon Talk Notes": backstagecon-talk-notes.md
+  - "My BackstageCon Talk Notes": backstagecon-talk-notes.md
   #   - 'REST API Versioning' : recipes/rest-api-versioning.md
   #   - 'Get Started With Git': recipes/get-started-with-git.md
   
