@@ -4,7 +4,9 @@ I created the Backchat plugin as a **proof of concept**. The goal was to give Ba
 
 ## Benefits
 
-In the process of building this proof of concept I realized that there is always going to be a need for private AI options and flexibility when it comes to which large language models an organization wants it's developers to use (and possibly train). If you share this vision, why not contribute?
+In the process of building this proof of concept I realized that there is always going to be a need for private AI options and flexibility when it comes to the large language models an organization wants it's developers to use (and possibly train) and their location (e.g. on premise).
+
+!!! question "If you share this vision, why not contribute?"
 
 ![Backchat benefits](./images/backchat-benefits.png)
 
