@@ -2,10 +2,10 @@ site_name: backchat
 site_description: BackstageCon 2023
 site_author: user:ben.wilcock
 nav:
-  - "Generative AI In Backstage | Ben Wilcock @ BackstageCon NA 2023": index.md
-  - "Starting The AI Servers & GUIs": start-ai-servers.md  
+  - "Introduction": index.md
   - "The Backchat Plugin": the-backchat-plugin.md
-  #   - 'REST API Design': recipes/rest-api-design.md
+  - "Starting Backchat's AI Servers & GUIs": start-ai-servers.md  
+  - "BackstageCon Talk Notes": backstagecon-talk-notes.md
   #   - 'REST API Versioning' : recipes/rest-api-versioning.md
   #   - 'Get Started With Git': recipes/get-started-with-git.md
   
