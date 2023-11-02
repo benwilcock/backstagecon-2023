@@ -1,6 +1,6 @@
-![Introducing Backchat](./images/backchat-intro.png)
-
 I created the Backchat plugin as a proof of concept. The goal was to give Backstage users a flavor of what it might be like to use generative AI from within the Backstage GUI.
+
+![Introducing Backchat](./images/backchat-intro.png)
 
 However, in building this plugin I realized that there is always going to be a need for private AI options and flexibility when it comes to which large language models an organization wants it's developers to use (and possibly train). If you share this vision, why not contribute?
 
