@@ -1,0 +1,19 @@
+# Used to run the TechDocs supply chain on Tanzu Application Platform
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: backchat
+  labels:
+    apps.tanzu.vmware.com/workload-type: techdocs
+    app.kubernetes.io/part-of: backchat
+  namespace: polyglot-demo
+spec:
+  params:
+    - name: techdocs_type
+      value: "system"
+  source:
+    git:
+      url: https://github.com/benwilcock/backstagecon-2023
+      ref:
+        branch: main
+    subPath: "."
