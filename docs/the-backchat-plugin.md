@@ -6,7 +6,7 @@ However, in building this plugin I realized that there is always going to be a n
 
 ![Backchat benefits](./images/backchat-benefits.png)
 
-!!! warn "Work In Progress"
+!!! warning "Work In Progress"
     Help wanted.
 
 ## Architecture
