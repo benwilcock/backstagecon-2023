@@ -1,6 +1,8 @@
 Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocatedeventsna2023.sched.com/event/07a22acf572c9ba6ac78a3fff50c6e7d). This archive represents my notes for the talk and other setup instructions necessary to recreate the demonstration of "Backchat AI".
 
-Don't be a stranger - [contact me on LinkedIn!](https://www.linkedin.com/in/benwilcock/)
+Don't be a stranger!
+
+[Contact me on LinkedIn!](https://www.linkedin.com/in/benwilcock/){ .md-button }
 
 ??? info "Talk Outline"
 
