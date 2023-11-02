@@ -6,17 +6,21 @@ However, in building this plugin I realized that there is always going to be a n
 
 ![Backchat benefits](./images/backchat-benefits.png)
 
+!!! warn "Work In Progress"
+    Help wanted.
+
 ## Architecture
+
 Thanks to it's simplicity, Backchat is very flexible. You can use any chat GUI you like at this stage.
 
-![Backchat architecture](./images/backchat-architecture.png){ width="720" }
+![Backchat architecture](./images/backchat-architecture.png)
 
 ## Use Cases
 
 There are a number of reasons why it could be helpful for developers to have access to an AI in Backstage.
 
-![Backchat use cases](./images/backchat-use-cases-1.png){ width="720" }
-![More Backchat use cases](./images/backchat-use-cases-2.png){ width="720" }
+![Backchat use cases](./images/backchat-use-cases-1.png)
+![More Backchat use cases](./images/backchat-use-cases-2.png)
 
 ## Roadmap
 

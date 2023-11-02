@@ -2,11 +2,11 @@ Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocat
 
 Don't be a stranger - [contact me on LinkedIn!](https://www.linkedin.com/in/benwilcock/)
 
-!!! info "Talk Outline"
+???+ info "Talk Outline"
 
     | **Talk**                                                     | **Outline**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [**GenAI In Backstage - Turbocharge Your Developer Productivity!**](./backstagecon-talk-notes.md) | Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses. |
+    |---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | [**GenAI In Backstage - Turbocharge Your Developer Productivity!**](./backstagecon-talk-notes.md) | Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses. |
 
 !!! info "The Backchat Plugin"
 
@@ -15,9 +15,4 @@ Don't be a stranger - [contact me on LinkedIn!](https://www.linkedin.com/in/benw
 !!! info "The Backchat AI Servers & GUIs"
 
     The AI servers and GUIs used by the plugin can be started using the instructions on the ["Starting The AI Servers & GUIs"](./start-ai-servers.md) or by reading the [README](https://github.com/benwilcock/backstagecon-2023/blob/main/README.md) (most up to date).
-
-
-
-
-
 
