@@ -11,3 +11,8 @@ text-generation-webui-config/loras/*
 text-generation-webui-config/presets/*
 text-generation-webui-config/prompts/*
 text-generation-webui-config/models/*
+
+openvino/
+privategpt/
+ollama/
+.vscode/

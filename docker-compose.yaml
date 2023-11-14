@@ -79,3 +79,41 @@ services:
       options:
         max-file: "3"   # number of files or file count
         max-size: '10m'
+  
+  # private-gpt:
+  #   container_name: private-gpt
+  #   image: benwilcock/privategpt:latest
+  #   ports:
+  #     - 8001:8001
+  #     - 8080:8080
+  #   volumes:
+  #     - ./privategpt/models:/models
+  #     - ./privategpt/ingest:/ingest
+  #     - ./privategpt/local_data:/local_data
+  #   # environment:
+  #   #   - PGPT_PROFILES=local
+
+  # openvino:
+  #   container_name: openvino
+  #   image: openvino/model_server:latest
+  #   command: --model_name resnet --model_path /models/resnet50 --layout NHWC:NCHW --port 9000
+  #   user: "${UID}:${GID}"
+  #   volumes:
+  #     - "./openvino/models:/models"
+  #   ports:
+  #     - "9000:9000"
+
+  ollama-webui:
+      container_name: ollama-webui
+      image: ollamawebui/ollama-webui
+      ports:
+          - '3100:8080'
+  ollama:
+      container_name: ollama
+      image: ollama/ollama
+      volumes:
+          - './ollama:/root/.ollama'
+      ports:
+          - '11434:11434'
+      environment:
+          - 'OLLAMA_ORIGINS=*'
