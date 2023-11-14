@@ -1,6 +1,7 @@
 # Backstage override configuration for your local development environment
 ai_server:
-  url: "http://localhost:3001" # Specifies where top find the Chatbot UI GUI
+  url: "http://localhost:3100" # Specifies where to find the Ollama Web UI 
+  #url: "http://localhost:3001" # Specifies where top find the Chatbot UI GUI
   #url: "http://localhost:7860" # Specifies where to find the Text Generation WebUI
 
 catalog:

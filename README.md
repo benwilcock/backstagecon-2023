@@ -1,10 +1,11 @@
 # Generative AI In Backstage | Ben Wilcock @ BackstageCon-2023
 
-Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocatedeventsna2023.sched.com/event/07a22acf572c9ba6ac78a3fff50c6e7d). This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of "Backchat".
+Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocatedeventsna2023.sched.com/event/07a22acf572c9ba6ac78a3fff50c6e7d). This folder represents my notes and other setup instructions necessary to recreate what I built for the demonstration of [Backchat - The AI Testbed For Backstage](https://github.com/benwilcock/backstage-plugin-backchat).
 
 [Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
+[Watch My BackstageCon Talk On GenAI](https://youtu.be/YuEsB4YQGUY?si=F9SCM0QudTv8rvo7)
 
-## Talk Outline
+## BackstageCon 2023 Talk Outline
 
 | **Title**                                                     | **Outline**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -12,27 +13,36 @@ Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocat
 
 ## The "Backchat" Plugin
 
-To get the plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs used by the plugin can be started using the instructions below. 
+At BackstageCon 2023 I introduced the "Backchat" generative AI testbed for Backstage. To get the Backchat plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs required by the plugin can be started using the instructions below.
 
-## Launching The LLM Servers and GUI's
+## Launching The LLM Servers and GUI's Locally
 
 Once you have cloned this repo locally, you can bring up the background AI servers and GUIs for Backchat using Docker compose (requires [Docker](https://docker.com)).
 
 ```bash
-git clone https://github.com/benwilcock/backstage-plugin-backchat.git
-cd backstage-plugin-backchat
+git clone https://github.com/benwilcock/backstagecon-2023.git
+cd backstagecon-2023
 docker compose up
 ```
 
 ## Notes On This Setup
 
-There are three containers in this setup. 
+There are many docker containers in this setup (which allows you to test out many frontend GUIs and backend LLM servers with [Backchat](https://github.com/benwilcock/backstage-plugin-backchat).
 
-* [LocalAI](https://localai.io) (provides a backend AI server only)
-* [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) (provides frontend AI client only)
-* [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui) (provides both an AI backend and frontend)
+* The [LocalAI](https://localai.io) container provides a backend LLM server for use with frontends like Chatbot UI.
+* The [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) container provides frontend LLM chat client for use with backends like LocalAI.
+* The [Ollama Web UI](https://github.com/ollama-webui/ollama-webui) container provides a frontend chat client for the [Ollama](https://github.com/jmorganca/ollama) container backend. This combo is possibly the easiest to use.
+* The [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui)  provides both an LLM backend and frontend client in a single container. It is possible to also use Chatbot UI with the backend it provides.
 
-Both LocalAI and Text Generation Web UI have the ability to download LLMs and provide an OpenAI API for compatibility with various frontends. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend.
+Both LocalAI, Text Generation Web UI, and Ollama have the ability to download LLMs.  LocalAI and Text Gen Web UI provide an OpenAI compatible API for use with various frontends and other components. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend. The Ollama combo is probably the easiest to use for setting up models, but I'm not sure of it's compatibility with other clients (so bear that in mind).
+
+If you know exactly which client/server combination you want to use, you can safely comment out the containers you do not need in the `docker-compose.yaml` file (the # symbol at the start of a line comments out the whole line).
+
+## Configuring Ollama Web UI / Ollama
+
+This GUI/server combination probably offers the easiest setup of all. Once you have spun up the servers using the `docker compose` command above, open the [Ollama Web UI](http://localhost:3100) in your browser. Before you can chat you must add a model. To add a model, click the 'Settings' icon (a small cog wheel) next to the model chooser. When the settings panel appears, choose the 'Models' tab and in the "Pull a model" box type the name of the model you would like to use (e.g. `mistral`). Click the green download button icon, and the model will be downloaded for you. The downloader will show the progress of your download. This can take several minutes depending on your bandwidth. Once the model is downloaded, simply select it from the model chooser or the main chat screen. You can now send prompts to your model.
+
+> Mistral 7B is an exceptional model for local use. It has fast inference times, generates good text, and does not need very much system memory (around 8-16GB for the Q4 version model).
 
 ## Configuring LocalAI
 
@@ -41,6 +51,8 @@ LocalAI should work as a backend right out of the box, so long as you gave it ti
 If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also test the OpenAI API provided by this server via the API definition page in Backstage. Start by choosing the server `http://localhost:8080` from the list and execute a `GET` on the `/Models` endpoint. There's no need to authenticate. The server should return a list of the available models.
 
 > In theory this should work but I had issues (a browser call to the same address does work [http://localhost:8080/v1/models](http://localhost:8080/v1/models))
+
+Too add a GUI frontend, see the instrcutions for configuring ChatBotUI below.
 
 ## Configuring Text Generation Web UI
 
@@ -98,7 +110,7 @@ environment:
 
 ## Integrating These AIs With Backstage
 
-To use either of these AI GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate.
+To use either of these AI GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate. See [app-config.local.yaml.sample](./app-config.local.yaml.sample) in the root of this repo for an example of this file.
 
 ## Adding The Backchat TechDocs And Catalog To Backstage
 
@@ -119,6 +131,7 @@ catalog:
 
 * [Chatbot UI on localhost port 3001](http://localhost:3001)
 * [Text Generation Web UI on localhost port 7860](http://localhost:7860)
+* [Ollama Web UI on localhost port 3100](http://localhost:3100)
 * [Backstage GUI](http://localhost:3000)
 
 ## OpenAI API Documentation

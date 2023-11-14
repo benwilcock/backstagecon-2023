@@ -120,6 +120,7 @@ spec:
   dependsOn:
     - component:text-generation-web-ui
     - component:chatbot-ui
+    - component:ollama-web-ui
 
 ---
 apiVersion: backstage.io/v1alpha1
@@ -213,6 +214,62 @@ spec:
   dependsOn:
     - component:localai
     - component:text-generation-web-ui
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ollama-web-ui
+  description: 'Ollama Web UI provides a browser based GUI for popular local LLMs'
+  links:
+    - url: https://github.com/ollama-webui/ollama-webui
+      title: Website
+      type: website
+      icon: WebAsset
+    - url: http://localhost:3100
+      title: GUI
+      type: website
+      icon: WebAsset
+  tags:
+    - backchat
+    - ollama-web-ui
+spec:
+  type: service
+  lifecycle: production
+  system: backchat
+  owner: group:open-source
+  profile:
+    displayName: Ollama Web UI
+  dependsOn:
+    - component:ollama
+    
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ollama
+  description: 'Ollama provides a backend for the Ollama Web UI'
+  links:
+    - url: https://github.com/jmorganca/ollama
+      title: Website
+      type: website
+      icon: WebAsset
+    - url: http://localhost:11434/api/tags
+      title: API Endpoint for listing models
+      type: website
+      icon: WebAsset
+  tags:
+    - backchat
+    - ollama
+spec:
+  type: service
+  lifecycle: production
+  system: backchat
+  owner: group:open-source
+  profile:
+    displayName: Ollama
+  dependsOn:
+    - resource:mistral-7b
 
 ####################################
 # RESOURCES
