@@ -136,7 +136,7 @@ catalog:
 | **App** (*=default) | **Web Frontend** | **LLM Backend** | **Mapped PORT** | **Docker Image** | **Open Source (Lic)** | **OpenAI API** | **Notes** |
 |---|---|---|---|---|---|---|---|
 | Chatbot UI* | Yes | No | [3001](http://localhost:3001) | Yes | Yes (MIT) | Yes | Development stopped. Bug: Expects model name to be "gpt-3.5-turbo" |
-| Big-AGI | Yes | No | [3456](http:localhost:3456) | Yes | Yes (MIT) | Yes | Requires initial setup of LocalAI or Ollama models in prefs. |
+| Big-AGI | Yes | No | [3456](http:localhost:3456) | Yes | Yes (MIT) | Yes | Requires initial setup of LocalAI or Ollama or Text Gen Web UI servers in prefs. |
 | LocalAI* | No | Yes | 8080 | Yes | Yes (MIT) | Yes | Auto loads model on demand. Can download models on boot. Model download & install mechanism is a bit funky. |
 | Text Gen Web UI | Yes | Yes | [7860](http://localhost:7860)/5001 | Yes | Yes (GNU AFFERO) | Yes (via extension) | Quite complex. Lots of features. Used by TheBloke. Feels pretty fast when models are pre-loaded. |
 | Ollama Web UI | Yes | No | [3100](http://localhost:3100) | Yes | Yes (MIT) | ?? No |  |
