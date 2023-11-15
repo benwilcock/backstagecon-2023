@@ -5,19 +5,19 @@ Thanks for taking the time to see [my talk at BackstageCon 2023](https://colocat
 [Contact me on LinkedIn](https://www.linkedin.com/in/benwilcock/)
 [Watch My BackstageCon Talk On GenAI](https://youtu.be/YuEsB4YQGUY?si=F9SCM0QudTv8rvo7)
 
-## BackstageCon 2023 Talk Outline
+## BackstageCon 2023 Talk - **GenAI In Backstage - Turbocharge Your Developer Productivity!**
 
-| **Title**                                                     | **Outline**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **GenAI In Backstage - Turbocharge Your Developer Productivity!** | Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses. |
+Backstage provides a powerful developer platform, but integrating the latest AI capabilities can take it to the next level. In this talk, we'll explore how to leverage large language models like ChatGPT within Backstage to automate routine tasks, generate code, find answers, and boost developer productivity. In this talk, you’ll learn how to use off-the-shelf open-source components to add a ChatGPT facility into Backstage, switch between different large language models, and prompt the LLM to deliver better responses.
 
 ## The "Backchat" Plugin
 
-At BackstageCon 2023 I introduced the "Backchat" generative AI testbed for Backstage. To get the Backchat plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs required by the plugin can be started using the instructions below.
+At BackstageCon 2023 I introduced the "Backchat" plugin - a generative AI testbed for Backstage. To get the Backchat plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs required by the plugin can be started using the instructions in this repo.
+
+<figure><img src="./docs/images/backchat-architecture.jpg" alt="The Backchat Plugin Architecture" width="640px"><figcaption>The Backchat Plugin Architecture.</figcaption></figure>
 
 ## Launching The LLM Servers and GUI's Locally
 
-Once you have cloned this repo locally, you can bring up the background AI servers and GUIs for Backchat using Docker compose (requires [Docker](https://docker.com)).
+Once you have cloned this repo locally, you can bring up the background AI servers and GUIs for Backchat using the `docker-compose.yaml` fule (requires [docker compose](https://docker.com)).
 
 ```bash
 git clone https://github.com/benwilcock/backstagecon-2023.git
@@ -27,13 +27,13 @@ docker compose up
 
 ## Notes On This Setup
 
-There are many docker containers in this setup (which allows you to test out many frontend GUIs and backend LLM servers with [Backchat](https://github.com/benwilcock/backstage-plugin-backchat).
+There are many docker containers in this setup (which allows you to test out multiple frontend GUIs and backend LLM servers with [Backchat](https://github.com/benwilcock/backstage-plugin-backchat).
 
 * The [LocalAI](https://localai.io) container provides a backend LLM server for use with frontends like Chatbot UI.
 * The [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) container provides frontend LLM chat client for use with backends like LocalAI.
 * The [Ollama Web UI](https://github.com/ollama-webui/ollama-webui) container provides a frontend chat client for the [Ollama](https://github.com/jmorganca/ollama) container backend. This combo is possibly the easiest to use.
 * The [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui)  provides both an LLM backend and frontend client in a single container. It is possible to also use Chatbot UI with the backend it provides.
-* The [Big-AGI UI]() is a nice looking easy to use web frontend that can talk to multiple backends including Ollama, Text Gen Web UI (Oogabooga) and LocalAI at the same time. 
+* The [Big-AGI UI](https://github.com/enricoros/big-agi) is a nice looking and easy to use web frontend that can talk to multiple backends including Ollama, Text Gen Web UI (Oobabooga) and LocalAI at the same time. 
 
 the LocalAI, Text Generation Web UI, and Ollama LLM servers all have the ability to download LLMs. LocalAI and Text Gen Web UI provide an OpenAI compatible API for use with various frontends and other components. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend. The Ollama combo is probably the easiest to use for setting up models, but I'm not sure of it's compatibility with other clients (so bear that in mind).
 
@@ -66,7 +66,6 @@ Enter the following details in the download box on the right hand side, then hit
 | Model Name:      | [TheBloke/Mistral-7B-OpenOrca-GGUF](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF)                                         |
 | Filename:        | [mistral-7b-openorca.Q4_K_M.gguf](https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF/blob/main/mistral-7b-openorca.Q4_K_M.gguf) |
  
-
 > Mistral 7B is an exceptional model for local use. It has fast inference times, generates good text, and does not need very much system memory (around 8GB for the Q4 version model).
 
 This download will usually take several minutes.
@@ -111,7 +110,7 @@ environment:
 
 ## Configuring Big-AGI UI To talk to Ollama, LocalAI, or Text Gen Web UI
 
-In the Big-AGI GUI, choose the "Models" dropdown and choose "Models" (or press `ctrl-shift-M`). In the popup, choose to "Add +" a model server. From the list of server choices, choose either "LocalAI" or "Ollama" or "Oogabooga" (Text Gen Web UI). 
+In the Big-AGI GUI, choose the "Models" dropdown and choose "Models" (or press `ctrl-shift-M`). In the popup, choose to "Add +" a model server. From the list of server choices, choose either "LocalAI" or "Ollama" or "Oobabooga" (Text Gen Web UI). 
 
 > You can add one server at a time in this window but you can use them all interchangably once you have set them up. 
 
@@ -143,12 +142,12 @@ catalog:
 | Chatbot UI* | Yes | No | [3001](http://localhost:3001) | Yes | Yes (MIT) | Yes | Development stopped. Bug: Expects model name to be "gpt-3.5-turbo" |
 | Big-AGI | Yes | No | [3456](http:localhost:3456) | Yes | Yes (MIT) | Yes | Requires initial setup of LocalAI or Ollama models in prefs. |
 | LocalAI* | No | Yes | 8080 | Yes | Yes (MIT) | Yes | Auto loads model on demand. Can download models on boot. Model download & install mechanism is a bit funky. |
-| Text Gen Web UI | Yes | Yes | [7860](http://localhost:7860)/5001 | Yes | Yes (GNU AFFERO) | Yes (via extension) | Quite complex. Lots of features. Used by TheBloke. |
+| Text Gen Web UI | Yes | Yes | [7860](http://localhost:7860)/5001 | Yes | Yes (GNU AFFERO) | Yes (via extension) | Quite complex. Lots of features. Used by TheBloke. Feels pretty fast when models are pre-loaded. |
 | Ollama Web UI | Yes | No | [3100](http://localhost:3100) | Yes | Yes (MIT) | ?? No |  |
-| Ollama | No | Yes | 11434 | Yes | Yes (MIT) | ?? No |  |
+| Ollama | No | Yes | 11434 | Yes | Yes (MIT) | ?? No | Seems to offer a non-standard API, but Ollama Web UI and Big-AGI can talk to it. |
 | ChatGPT-web | Yes | No | 5173 | DIY | Yes (GPL3) | ?? No | Claims to be OpenAI API compatible, but didn't work for me when testing with LocalAI and LM Studio servers. |
 | OpenVino Model Server | No | Yes | 9000 | Yes | Yes (Apache2) | ?? No | ML. Does it even do LLM? |
-| LM Studio (Desktop) | No | Yes | 1234 | No | No | Yes | Great for desktop backend testing without Docker. Easy model download. Lots of settings. Linux is BETA only. |
+| LM Studio (Desktop) | No | Yes | 1234 | No | No | Yes | Great for desktop backend testing without Docker. Easy model download. Lots of settings. Linux is BETA only. API backend hasn't worked that well with clients. Perhaps best used to test models. |
 
 ## Links For The Switchable Frontend GUIs
 
