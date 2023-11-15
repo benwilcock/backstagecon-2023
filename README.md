@@ -37,23 +37,21 @@ There are many docker containers in this setup (which allows you to test out mul
 
 the LocalAI, Text Generation Web UI, and Ollama LLM servers all have the ability to download LLMs. LocalAI and Text Gen Web UI provide an OpenAI compatible API for use with various frontends and other components. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend. The Ollama combo is probably the easiest to use for setting up models, but I'm not sure of it's compatibility with other clients (so bear that in mind).
 
-If you know exactly which client/server combination you want to use, you can safely comment out the containers you do not need in the `docker-compose.yaml` file (the # symbol at the start of a line comments out the whole line).
+> If you know exactly which client/server combination you want to use, you can safely comment out the containers you do not need in the `docker-compose.yaml` file (the # symbol at the start of a line comments out the whole line).
+
+## Configuring LocalAI (default choice)
+
+LocalAI should work as a backend right out of the box, so long as you gave it time to download a default model. Chatbot UI is also configured to use this server by default.
+
+A browser call to the LocalAI server endpoint can be used to test that the OpenAI API is working correctly on [http://localhost:8080/v1/models](http://localhost:8080/v1/models)
+
+There are more detailed instructions for configuring ChatBotUI below.
 
 ## Configuring Ollama Web UI / Ollama
 
 This GUI/server combination probably offers the easiest setup of all. Once you have spun up the servers using the `docker compose` command above, open the [Ollama Web UI](http://localhost:3100) in your browser. Before you can chat you must add a model. To add a model, click the 'Settings' icon (a small cog wheel) next to the model chooser. When the settings panel appears, choose the 'Models' tab and in the "Pull a model" box type the name of the model you would like to use (e.g. `mistral`). Click the green download button icon, and the model will be downloaded for you. The downloader will show the progress of your download. This can take several minutes depending on your bandwidth. Once the model is downloaded, simply select it from the model chooser or the main chat screen. You can now send prompts to your model.
 
 > Mistral 7B is an exceptional model for local use. It has fast inference times, generates good text, and does not need very much system memory (around 8-16GB for the Q4 version model).
-
-## Configuring LocalAI
-
-LocalAI should work as a backend right out of the box, so long as you gave it time to download a default model.
-
-If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also test the OpenAI API provided by this server via the API definition page in Backstage. Start by choosing the server `http://localhost:8080` from the list and execute a `GET` on the `/Models` endpoint. There's no need to authenticate. The server should return a list of the available models.
-
-> In theory this should work but I had issues (a browser call to the same address does work [http://localhost:8080/v1/models](http://localhost:8080/v1/models))
-
-Too add a GUI frontend, see the instrcutions for configuring ChatBotUI below.
 
 ## Configuring Text Generation Web UI
 
@@ -86,11 +84,11 @@ The president of the United States in 1997 was Bill Clinton.
 
 If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also try the OpenAI API calls via the API definition page in Backstage. Start by using the server `http://localhost:5001` and execute a `GET` on the `/Models` endpoint. There's no need to authenticate. The server should return a list of the available models.
 
-## Configuring The Chatbot UI Backend
+## Configuring Chatbot UI's Backend
 
 In the configuration for the Chatbot UI container (in the `docker-compose.yaml` file), set the `OPENAI_API_HOST` environment variable to point to the endpoint of the backend server you'd like to use.
 
-To use LocalAI server as the backend API:
+To use the LocalAI server as the OpenAI API backend:
 
 ```yaml
 ...
@@ -99,7 +97,7 @@ environment:
 ...
 ```
 
-To use Text Generation Web UI server (with the `openai` extension loaded) as the backend API:
+To use Text Generation Web UI server (with the `openai` extension loaded) as the OpenAI API backend:
 
 ```yaml
 ...
@@ -110,15 +108,15 @@ environment:
 
 ## Configuring Big-AGI UI To talk to Ollama, LocalAI, or Text Gen Web UI
 
-In the Big-AGI GUI, choose the "Models" dropdown and choose "Models" (or press `ctrl-shift-M`). In the popup, choose to "Add +" a model server. From the list of server choices, choose either "LocalAI" or "Ollama" or "Oobabooga" (Text Gen Web UI). 
+Big-AGI is very flexible. It can be configured to talk to multiple backends at the same time. To configure a backend, in the Big-AGI GUI in your browser, choose the "Models" dropdown and choose "Models" (or press `ctrl-shift-M`). In the popup, choose to "Add +" a model server. From the list of server types, choose either "LocalAI" or "Ollama" or "Oobabooga" (Text Gen Web UI) as required. 
 
-> You can add one server at a time in this window but you can use them all interchangably once you have set them up. 
+> You can only add one server at a time in this window but you can use them all interchangably once you have set them up. 
 
-You will then be prompted for the URL of the API server. Don't for get to use the Docker DNS names and exposed ports assigned in the `docker-compose.yaml`. For example, "http://ollama:11434" would be the correct URL for connections to the Ollama server.
+You will then be prompted for the URL of the API server you want to use. Don't for get to use the Docker DNS names and exposed ports assigned in the `docker-compose.yaml` in your URL setting. For example, "http://ollama:11434" would be the correct URL for connections to the Ollama server.
 
-## Integrating These AIs With Backstage
+## Integrating Any Of These UIs With Backstage
 
-To use either of these AI GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate. See [app-config.local.yaml.sample](./app-config.local.yaml.sample) in the root of this repo for an example of this file.
+To use either of these LLM Chat GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI interface you'd like to incorporate and test in Backstage. See [app-config.local.yaml.sample](./app-config.local.yaml.sample) in the root of this repo for an example of this file.
 
 ## Adding The Backchat TechDocs And Catalog To Backstage
 
