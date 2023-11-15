@@ -11,7 +11,7 @@ Backstage provides a powerful developer platform, but integrating the latest AI 
 
 ## The "Backchat" Plugin
 
-At BackstageCon 2023 I introduced the "Backchat" plugin - a generative AI testbed for Backstage. To get the Backchat plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub. The AI servers and GUIs required by the plugin can be started using the instructions in this repo.
+At BackstageCon 2023 I introduced the "Backchat" plugin - a generative AI testbed for Backstage.  The AI servers and GUIs required by the plugin can be started using the instructions in this repo. To get the Backchat plugin and to integrate it with your Backstage instance, see the [backstage-plugin-backchat](https://github.com/benwilcock/backstage-plugin-backchat) repository on GitHub.
 
 <figure><img src="./docs/images/backchat-architecture.jpg" alt="The Backchat Plugin Architecture" width="640px"><figcaption>The Backchat Plugin Architecture.</figcaption></figure>
 
