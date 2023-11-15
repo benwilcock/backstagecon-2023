@@ -33,8 +33,9 @@ There are many docker containers in this setup (which allows you to test out man
 * The [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) container provides frontend LLM chat client for use with backends like LocalAI.
 * The [Ollama Web UI](https://github.com/ollama-webui/ollama-webui) container provides a frontend chat client for the [Ollama](https://github.com/jmorganca/ollama) container backend. This combo is possibly the easiest to use.
 * The [Text Generation Web UI](https://github.com/oobabooga/text-generation-webui)  provides both an LLM backend and frontend client in a single container. It is possible to also use Chatbot UI with the backend it provides.
+* The [Big-AGI UI]() is a nice looking easy to use web frontend that can talk to multiple backends including Ollama, Text Gen Web UI (Oogabooga) and LocalAI at the same time. 
 
-Both LocalAI, Text Generation Web UI, and Ollama have the ability to download LLMs.  LocalAI and Text Gen Web UI provide an OpenAI compatible API for use with various frontends and other components. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend. The Ollama combo is probably the easiest to use for setting up models, but I'm not sure of it's compatibility with other clients (so bear that in mind).
+the LocalAI, Text Generation Web UI, and Ollama LLM servers all have the ability to download LLMs. LocalAI and Text Gen Web UI provide an OpenAI compatible API for use with various frontends and other components. Chatbot UI can be configured to use either LocalAI or Text Generation Web UI as its backend. The Ollama combo is probably the easiest to use for setting up models, but I'm not sure of it's compatibility with other clients (so bear that in mind).
 
 If you know exactly which client/server combination you want to use, you can safely comment out the containers you do not need in the `docker-compose.yaml` file (the # symbol at the start of a line comments out the whole line).
 
@@ -108,6 +109,14 @@ environment:
 ...
 ```
 
+## Configuring Big-AGI UI To talk to Ollama, LocalAI, or Text Gen Web UI
+
+In the Big-AGI GUI, choose the "Models" dropdown and choose "Models" (or press `ctrl-shift-M`). In the popup, choose to "Add +" a model server. From the list of server choices, choose either "LocalAI" or "Ollama" or "Oogabooga" (Text Gen Web UI). 
+
+> You can add one server at a time in this window but you can use them all interchangably once you have set them up. 
+
+You will then be prompted for the URL of the API server. Don't for get to use the Docker DNS names and exposed ports assigned in the `docker-compose.yaml`. For example, "http://ollama:11434" would be the correct URL for connections to the Ollama server.
+
 ## Integrating These AIs With Backstage
 
 To use either of these AI GUIs in backstage, add the [Backchat plugin for Backstage](https://github.com/benwilcock/backstage-plugin-backchat) to your setup and configure `app-config.local.yaml` with the URL of the GUI you'd like to incorporate. See [app-config.local.yaml.sample](./app-config.local.yaml.sample) in the root of this repo for an example of this file.
@@ -127,12 +136,29 @@ catalog:
     - allow: [Component, API, Resource, System, Domain, Location, Group, User] # User and Group must be added.
 ```
 
-## Links For The GUIs
+## Full Server & Client List
+
+| **App** (*=default) | **Web Frontend** | **LLM Backend** | **Mapped PORT** | **Docker Image** | **Open Source (Lic)** | **OpenAI API** | **Notes** |
+|---|---|---|---|---|---|---|---|
+| Chatbot UI* | Yes | No | [3001](http://localhost:3001) | Yes | Yes (MIT) | Yes | Development stopped. Bug: Expects model name to be "gpt-3.5-turbo" |
+| Big-AGI | Yes | No | [3456](http:localhost:3456) | Yes | Yes (MIT) | Yes | Requires initial setup of LocalAI or Ollama models in prefs. |
+| LocalAI* | No | Yes | 8080 | Yes | Yes (MIT) | Yes | Auto loads model on demand. Can download models on boot. Model download & install mechanism is a bit funky. |
+| Text Gen Web UI | Yes | Yes | [7860](http://localhost:7860)/5001 | Yes | Yes (GNU AFFERO) | Yes (via extension) | Quite complex. Lots of features. Used by TheBloke. |
+| Ollama Web UI | Yes | No | [3100](http://localhost:3100) | Yes | Yes (MIT) | ?? No |  |
+| Ollama | No | Yes | 11434 | Yes | Yes (MIT) | ?? No |  |
+| ChatGPT-web | Yes | No | 5173 | DIY | Yes (GPL3) | ?? No | Claims to be OpenAI API compatible, but didn't work for me when testing with LocalAI and LM Studio servers. |
+| OpenVino Model Server | No | Yes | 9000 | Yes | Yes (Apache2) | ?? No | ML. Does it even do LLM? |
+| LM Studio (Desktop) | No | Yes | 1234 | No | No | Yes | Great for desktop backend testing without Docker. Easy model download. Lots of settings. Linux is BETA only. |
+
+## Links For The Switchable Frontend GUIs
+
+Ports shown here are those exposed by he components in the `docker-compose.yaml` file.
 
 * [Chatbot UI on localhost port 3001](http://localhost:3001)
 * [Text Generation Web UI on localhost port 7860](http://localhost:7860)
 * [Ollama Web UI on localhost port 3100](http://localhost:3100)
-* [Backstage GUI](http://localhost:3000)
+* [Big-AGI UI on localhost port 3456](http://localhost:3456)
+* [Backstage GUI on localhost port 3000](http://localhost:3000) (not part of `docker-compose.yaml`)
 
 ## OpenAI API Documentation
 

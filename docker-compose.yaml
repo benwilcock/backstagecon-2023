@@ -1,17 +1,12 @@
 version: '3.6'
 
-## See also .env file for additional settings
 name: backstagecon-local-ai
 
 services:
-  # OpenAI compatible API server capable of using several AI models including gpt4app-j (chat), stable diffusion (images), and whisper (audio)
+
   local-ai:
     container_name: local-ai-api
-    # See https://quay.io/repository/go-skynet/local-ai?tab=tags for versions.
     image: quay.io/go-skynet/local-ai:v1.30.0 # was: quay.io/go-skynet/local-ai:v1.25.0
-    # As initially LocalAI will download the models defined in PRELOAD_MODELS
-    # you might need to tweak the healthcheck values here according to your network connection.
-    # Here we give a timespan of 20m to download all the required files.
     restart: unless-stopped
     build:
       context: .
@@ -22,15 +17,13 @@ services:
       - 'MODELS_PATH=/models' # Location of the models folder in the image
       - 'DEBUG=true' # More info for builds and output when tailing logs
       - 'GALLERIES=[{"name":"model-gallery", "url":"github:go-skynet/model-gallery/index.yaml"}, {"url": "github:go-skynet/model-gallery/huggingface.yaml","name":"huggingface"}]'
-     # You can preload (auto-download) different models. See: https://github.com/go-skynet/model-gallery
-      - 'PRELOAD_MODELS=[{"url": "github:go-skynet/model-gallery/openllama-7b-open-instruct.yaml", "name": "openllama-7b"}]'
+      - 'PRELOAD_MODELS=[{"url": "github:go-skynet/model-gallery/openllama-7b-open-instruct.yaml", "name": "openllama-7b"}, {"id": "model-gallery@mistral"}]' # Preload (auto-download) different models. See: https://github.com/go-skynet/model-gallery
     volumes:
       - ./localai-models:/models:cached # Maps the model folder to this project's models folder
     ports:
-      - 8080:8080 # Rest API will be on this port (outside:inside)
+      - 8080:8080 # OpenAI compatible REST API will be on this port (outside:inside)
     command: ["/usr/bin/local-ai" ]
 
-  # ChatBot UI - ChatGPT Like Frontend ######################
   chatbot-ui:
     container_name: chatbot-ui
     image: ghcr.io/mckaywrigley/chatbot-ui:main
@@ -38,10 +31,10 @@ services:
     environment:
       - 'NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT="Below is an instruction that describes a task. Write a response that appropriately completes the request. Use markdown where appropriate."'
       - 'NEXT_PUBLIC_DEFAULT_TEMPERATURE="0.7"'
-      - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX'
-      # - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Text Generation UI API server
+      - 'OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXX' # Not required by LocalAI etc.
       - 'OPENAI_API_HOST=http://local-ai-api:8080' # LocalAI API endpoint
-      # - 'DEFAULT_MODEL=openllama-7b' # Specify the default model to use ("gpt-3.5-turbo" is default)
+      # - 'OPENAI_API_HOST=http://text-generation-webui:5001' # Alternative - Text Generation UI API server
+      # - 'DEFAULT_MODEL=openllama-7b' # Specify the default model to use ("gpt-3.5-turbo" is default) doesn't tend to work anyway
     ports:
       - 3001:3000 # ChatBot UI will be on this port (outside:inside)
 
@@ -50,9 +43,9 @@ services:
     container_name: text-generation-webui
     restart: unless-stopped
     environment:
-        # Custom launch args (e.g., --model MODEL_NAME). If you haven't downloaded any models, remove --model MODEL or server won't boot.
+        # Custom launch args (e.g., --model MODEL_NAME). 
+        # If you haven't downloaded any models, remove --model MODEL or server won't boot.
       - EXTRA_LAUNCH_ARGS="--listen --verbose --api --extensions api openai" #  --model mistral-7b-openorca.Q4_K_M.gguf 
-#      - BUILD_EXTENSIONS_LIVE="silero_tts whisper_stt" # Install named extensions during every container launch. THIS WILL SIGNIFICANLTLY SLOW LAUNCH TIME.
     ports:
       - 7860:7860  # Default GUI port (browser UI used for model settings and chat)
       - 5000:5000  # Default TGUI-API port (needs api extension running)
@@ -68,30 +61,52 @@ services:
       - ./text-generation-webui-config/training:/app/training
       - ./text-generation-webui-config/settings:/app/settings
       - ./text-generation-webui-config/extensions:/app/extensions  # Persist all extensions
-#      - ./text-generation-webui-config/extensions/silero_tts:/app/extensions/silero_tts  # Persist a single extension
       - type: bind
         source: ./text-generation-webui-config/settings.yaml
         target: /app/settings.yaml
         read_only: false
-        # /app/logs/chat/Assistant
     logging:
       driver:  json-file
       options:
         max-file: "3"   # number of files or file count
         max-size: '10m'
-  
-  # private-gpt:
-  #   container_name: private-gpt
-  #   image: benwilcock/privategpt:latest
+
+  ollama-webui:
+    container_name: ollama-webui
+    image: ollamawebui/ollama-webui
+    ports:
+      - '3100:8080'
+    environment:
+      - 'OLLAMA_ORIGINS=*'
+      - 'OLLAMA_HOST=0.0.0.0'
+
+  ollama:
+    container_name: ollama
+    image: ollama/ollama
+    volumes:
+      - './ollama:/root/.ollama'
+    ports:
+      - '11434:11434'
+
+  big-agi:
+    container_name: big-agi
+    image: ghcr.io/enricoros/big-agi:main
+    ports:
+      - "3456:3000"
+    command: [ "next", "start", "-p", "3000" ] 
+
+  # chatgpt_web:
+  #   container_name: chatgpt-web
+  #   image: benwilcock/chatgpt-web
+  #   restart: always
   #   ports:
-  #     - 8001:8001
-  #     - 8080:8080
+  #     - 5173:5173
   #   volumes:
-  #     - ./privategpt/models:/models
-  #     - ./privategpt/ingest:/ingest
-  #     - ./privategpt/local_data:/local_data
-  #   # environment:
-  #   #   - PGPT_PROFILES=local
+  #     - .:/app
+  #   environment:
+  #     - VITE_API_BASE=http://192.168.1.80:1234
+  #     # - VITE_ENDPOINT_COMPLETIONS=/v1/chat/completions
+  #     # - VITE_ENDPOINT_MODELS=/v1/models
 
   # openvino:
   #   container_name: openvino
@@ -102,18 +117,3 @@ services:
   #     - "./openvino/models:/models"
   #   ports:
   #     - "9000:9000"
-
-  ollama-webui:
-      container_name: ollama-webui
-      image: ollamawebui/ollama-webui
-      ports:
-          - '3100:8080'
-  ollama:
-      container_name: ollama
-      image: ollama/ollama
-      volumes:
-          - './ollama:/root/.ollama'
-      ports:
-          - '11434:11434'
-      environment:
-          - 'OLLAMA_ORIGINS=*'
