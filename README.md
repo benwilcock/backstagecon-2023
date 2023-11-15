@@ -39,25 +39,25 @@ the LocalAI, Text Generation Web UI, and Ollama LLM servers all have the ability
 
 > If you know exactly which client/server combination you want to use, you can safely comment out the containers you do not need in the `docker-compose.yaml` file (the # symbol at the start of a line comments out the whole line).
 
-## Configuring LocalAI (default choice)
+## LocalAI & Chatbot UI (the default choice)
 
-LocalAI should work as a backend right out of the box, so long as you gave it time to download a default model. Chatbot UI is also configured to use this server by default.
+LocalAI should work as a backend right out of the box, so long as you gave it time to download a default model. Chatbot UI is also configured to use this server by default. Simply being patient and running the `docker compose` should be sufficient to give you access to your very own local (and private) LLM.
 
-A browser call to the LocalAI server endpoint can be used to test that the OpenAI API is working correctly on [http://localhost:8080/v1/models](http://localhost:8080/v1/models)
+> If you have issues, check the docker logs. A browser call to the LocalAI server endpoint can be used to test that the OpenAI API server is working correctly on [http://localhost:8080/v1/models](http://localhost:8080/v1/models)
 
-There are more detailed instructions for configuring ChatBotUI below.
+There are more detailed instructions for configuring ChatBotUI's server preference below.
 
 ## Configuring Ollama Web UI / Ollama
 
-This GUI/server combination probably offers the easiest setup of all. Once you have spun up the servers using the `docker compose` command above, open the [Ollama Web UI](http://localhost:3100) in your browser. Before you can chat you must add a model. To add a model, click the 'Settings' icon (a small cog wheel) next to the model chooser. When the settings panel appears, choose the 'Models' tab and in the "Pull a model" box type the name of the model you would like to use (e.g. `mistral`). Click the green download button icon, and the model will be downloaded for you. The downloader will show the progress of your download. This can take several minutes depending on your bandwidth. Once the model is downloaded, simply select it from the model chooser or the main chat screen. You can now send prompts to your model.
+This GUI/server combination probably offers the easiest model setup of all. Once you have spun up the servers using the `docker compose` command above, open the [Ollama Web UI](http://localhost:3100) in your browser. Before you can chat you must add a model. To add a model, click the 'Settings' icon (a small cog wheel) next to the model chooser. When the settings panel appears, choose the 'Models' tab and in the "Pull a model" box type the name of the model you would like to use (e.g. `mistral`). Click the green download button icon, and the model will be downloaded for you. The downloader will show the progress of your download. This can take several minutes depending on your bandwidth. Once the model is downloaded, simply select it from the model chooser or the main chat screen. You can now send prompts to your model.
 
 > Mistral 7B is an exceptional model for local use. It has fast inference times, generates good text, and does not need very much system memory (around 8-16GB for the Q4 version model).
 
 ## Configuring Text Generation Web UI
 
-You need to begin by downloading a large language model in the "Models" tab in the [Text Generation WebUI GUI](http://localhost:7860).
+Generally I find this server to offer the fastest inference times. Before you begin, setup a large language model by downloading one using the "Models" tab in the [Text Generation WebUI GUI](http://localhost:7860).
 
-Enter the following details in the download box on the right hand side, then hit the big "Download" button to grab the model.
+Enter the following details in the download box on the right hand side, then hit the big "Download" button to grab the model. This download will usually take several minutes.
 
 | **GUI Form Box** | **Setting**                                                                                                                           |
 |------------------|---------------------------------------------------------------------------------------------------------------------------------------|
@@ -66,11 +66,9 @@ Enter the following details in the download box on the right hand side, then hit
  
 > Mistral 7B is an exceptional model for local use. It has fast inference times, generates good text, and does not need very much system memory (around 8GB for the Q4 version model).
 
-This download will usually take several minutes.
-
 Once downloaded, reboot the container and go back to Models page of the [Text Generation WebUI GUI](http://localhost:7860) and now 'select' the `mistral-7b-openorca.Q4_K_M.gguf` as your model and click the "Load" button. Set the model to use as many threads as you have physical CPUs (if your PC supports 8 threads, you probably have 4 CPUs, so set it to "4").
 
-Finally, head to the "Chat" tab and ask the Backchat AI (A.K.A the "Assistant") a question. For example
+Finally, head to the "Chat" tab and ask a question. For example:
 
 ```text
 You: "Who was the president of the United States in 1997?"
@@ -82,9 +80,9 @@ The AI should respond with a reasonable answer, such as:
 The president of the United States in 1997 was Bill Clinton.
 ```
 
-If you already loaded the Backchat software catalog YAML into your Backstage instance, you can also try the OpenAI API calls via the API definition page in Backstage. Start by using the server `http://localhost:5001` and execute a `GET` on the `/Models` endpoint. There's no need to authenticate. The server should return a list of the available models.
+If you encounter issues, check the docker logs. You can test the API server is working executing a `GET` request on the [http://localhost:5001/v1/models](http://localhost:5001/v1/models) endpont.The server should return a list of the available models.
 
-## Configuring Chatbot UI's Backend
+## Switching Chatbot UI's Backend
 
 In the configuration for the Chatbot UI container (in the `docker-compose.yaml` file), set the `OPENAI_API_HOST` environment variable to point to the endpoint of the backend server you'd like to use.
 
