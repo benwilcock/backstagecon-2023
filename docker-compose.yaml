@@ -39,7 +39,7 @@ services:
       - 3001:3000 # ChatBot UI will be on this port (outside:inside)
 
   text-generation-webui:
-    image: atinoda/text-generation-webui:llama-cpu # Specify variant as the :tag (I'm using CPU only version - llama-cpu)
+    image: atinoda/text-generation-webui:llama-cpu-v1.7 # Specify variant as the :tag (I'm using CPU only version - llama-cpu)
     container_name: text-generation-webui
     restart: unless-stopped
     environment:
